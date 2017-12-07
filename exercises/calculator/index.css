@@ -1,0 +1,23 @@
+* {
+   box-sizing: border-box; 
+}
+#box {
+    background-color: gray;
+    width: 25vw;
+    border: 5px solid black;
+    margin: auto;
+}
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    color: blue;
+    background-color: darkgray;
+    text-align: center;
+}
+#num1ToAdd, #num2ToAdd, #resultOfAdd, #num1ToSubt, #num2ToSubt, #resultOfSubt, #num1ToMult, #num2ToMult, #resultOfMult{
+    background-color: gold;
+}
+/* #resultOfAdd, #resultOfSubt, #resultOfMult {
+    height: 15px;
+    width: 150px;
+} */

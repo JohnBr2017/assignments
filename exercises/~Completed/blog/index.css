@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: auto;
+    width: 60%;
+    position: relative;
+}
+.naveBar {
+    background-color: gold;
+    height: 20px;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+#topPageLink, #bottomPageLink, #FaqLink {
+    display: inline-block;
+    color: teal;
+}
+.title {
+    background-color: black;
+    color: gold;
+    top: 0px;
+    width: 100%;
+    margin: auto;
+}
+.blogPost {
+    /* position: absolute; */
+    left: 25%;
+    margin: auto;
+    width: 50%;
+}
+.image {
+    float: left;
+    margin: 5px;
+    image-rendering: 80%;
+}
+.post {
+    font-size: 20px;
+}

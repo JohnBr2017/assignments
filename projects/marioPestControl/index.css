@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background-size: 100vw;
+    background-image: url(marioTitle.jpg);
+    background-attachment: scroll;
+    position: relative;
+}
+h1 {
+    color: red;
+    font-size: 50px;
+    font-family: cursive;
+    width: 75%;
+    margin: auto;
+}
+#footer {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    color: blue;
+    font-size: 15px;
+    text-decoration: underline;
+    background-color: black;
+}
+.bob, .cheep, .goomba {
+    color: gold;
+    font-size: 20px;
+    font-family: cursive;
+    position: relative;
+}
+.picture {
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+}
+.coin {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+.pests {
+    width: 60%;
+    margin: auto;
+}
+h2 {
+    color: orange;
+    font-size: 25px;
+}
+#goombaPrice, #cheepPrice, #bobPrice {
+    display: inline-block;
+    position: relative;
+    bottom: 5px;    
+}
+#totalGoombaCaught, #totalCheepCheepCaught, #totalBobombCaught {
+    position: relative;
+    display: inline-block;
+    bottom: 5px;
+}
+#goombaCharge {
+    position: relative;
+    display: inline-block;
+    bottom: 5px;
+    left: 100px;
+}
