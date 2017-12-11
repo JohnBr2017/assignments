@@ -27,4 +27,13 @@ var goombaSubTotal = goombaPrice * goombaQty
 var bobombSubTotal = bobombPrice * bobombQty
 var cheepcheepSubTotal = cheepcheepPrice * cheepcheepQty
 
-document.getElementById("goombaCharge").innerHTML = "Cost of capture " + goombaSubTotal;
+document.getElementById("goombaCharge").innerHTML = "Cost of captures: " + goombaSubTotal + " Coins";
+document.getElementById("bobombCharge").innerHTML = "Cost of captures: " + bobombSubTotal + " Coins";
+document.getElementById("cheepcheepCharge").innerHTML = "Cost of captures: " + cheepcheepSubTotal + " Coins";
+
+
+
+// grand total bill
+var grandTotal = goombaSubTotal + bobombSubTotal + cheepcheepSubTotal
+
+document.getElementById("totalBill").innerHTML = "The cost of the total captures will be " + grandTotal + " coins!!!";
