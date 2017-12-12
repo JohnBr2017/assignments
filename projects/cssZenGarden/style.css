@@ -17,7 +17,7 @@ body {
 	font: 75% georgia, sans-serif;
 	line-height: 1.88889;
 	color: #555753; 
-	background: #fff url(http://csszengarden.com/001/blossoms.jpg) no-repeat bottom right; 
+	/* background: #fff url(http://csszengarden.com/001/blossoms.jpg) no-repeat bottom right;  */
 	margin: 0; 
 	padding: 0;
 	}
@@ -52,15 +52,25 @@ abbr {
 
 /* specific divs */
 .page-wrapper { 
-	background: url(http://csszengarden.com/001/zen-bg.jpg) no-repeat top left; 
+	background: url(http://www.csszengarden.com/214/huntington.jpg) no-repeat top left; 
 	padding: 0 175px 0 110px;  
+	height: 300px;
+	width: 100vw;
 	margin: 0; 
 	position: relative;
+	display: grid;
+	grid-column: 2fr 1fr;
+	grid-row: repeat(10 300px);
+	grid-template-areas: 
+	"intro sidebar"
+	"preamble sidebar"
+	"supporting sidebar"
 	}
 
 .intro { 
 	min-width: 470px;
 	width: 100%;
+	grid-area: intro;
 	}
 
 header h1 { 
@@ -94,27 +104,26 @@ header {
 
 .summary {
 	clear: both; 
-	/* margin: 20px 20px 20px 10px;  */
-	/* width: 160px;  */
+	margin: 20px 20px 20px 10px; 
+	width: 160px; 
 	/* float: left; */
+	grid-area: s;
 	}
 .summary p {
-	font: italic 15px georgia; 
-	text-align: left;
+	font: italic 1.1em/2.2 georgia; 
+	text-align: center;
 	}
 
-.preamble .explanation {
+.preamble {
+	grid-area: preamble;
 	clear: right; 
 	padding: 0px 10px 0 10px;
-	background-color: white;
 	}
 .supporting {	
+	grid-area: supporting;
 	padding-left: 10px; 
 	margin-bottom: 40px;
 	}
-.participation {
-	background-color: rgba(138,188,159,0.5);
-}
 
 footer { 
 	text-align: center; 
@@ -124,6 +133,7 @@ footer a:link, footer a:visited {
 	}
 
 .sidebar {
+	grid-area: sidebar;
 	margin-left: 600px; 
 	position: absolute; 
 	top: 0; 
@@ -188,11 +198,11 @@ footer a:link, footer a:visited {
 	}
 
 
-.extra1 {
+/* .extra1 {
 	background: transparent url(http://csszengarden.com/001/cr2.gif) top left no-repeat; 
 	position: absolute; 
 	top: 40px; 
 	right: 0; 
 	width: 148px; 
 	height: 110px;
-	}
+	} */
