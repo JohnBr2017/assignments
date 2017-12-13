@@ -11,7 +11,8 @@ if (rs.keyInYN("Will you slay the dragon?")) {
     var dragons = console.log("Hero " + (names.concat(" The " + color)).toLocaleUpperCase() + " run and hide!!");
 }
 
+console.log(("The adventures of " + names + " the " + age + " will have drastic effects on our world").length > 20)
 
-console.log(names.length)
+
 
 
