@@ -1,0 +1,30 @@
+body {
+    display: grid;
+    grid-column: 1fr 2fr 1fr;
+    background-image: url("orks-background.jpg");
+    background-size: 100vw;
+}
+
+.navbar {
+    display: grid;
+    grid-column: 2fr 2fr 2fr;
+    grid-template-areas:
+    "l1 l2 l3"
+}
+
+.link1  {
+    grid-area: l1;
+    text-align: center;
+}
+.link2  {
+    grid-area: l2;
+    text-align: center;
+}
+.link3  {
+    grid-area: l3;
+    text-align: center;
+}
+
+.info {
+    display: grid;
+}
