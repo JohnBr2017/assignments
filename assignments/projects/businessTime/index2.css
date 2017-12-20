@@ -5,18 +5,35 @@
 body {
     display: grid;
     grid-column: 1fr 4fr 1fr;
-    /* background-color: black; */
     background-image: url("https://i.pinimg.com/736x/f3/61/87/f361873e3638a12d78334402004c49ea--warhammer-fantasy-warhammer-k.jpg");
-    background-position: fixed;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100vw; 
     width: 80%;
     margin: auto;
     grid-template-areas: 
     "nav nav nav"
+    "h1 h1 h1"
     "simple simple ."
     ". mek mek"
 /* add @media to change background to just be badrukk when below 1150px */
+}
+@media (max-width: 1050px){
+    body {
+        background-image: url("Badrukk.jpg");
+        background-attachment: fixed;
+        grid-template-areas: 
+        "nav nav nav"
+        "h1 h1 h1"
+        "simple simple simple"
+        "mek mek mek"    
+    }
+    .simple .gunz1{
+        height: 75px;
+    }
+    .mekUpgrade .gunz1{
+        height: 75px;        
+    }
 }
 
 .navbar {
@@ -29,8 +46,8 @@ body {
 
 .link1, .link2, .link3 {
     font-family: 'Times New Roman', Times, serif;    
-    color: orangered;
-    text-shadow: 1px 1px black;    
+    color: black;
+    text-shadow: 1px 1px orangered;    
     text-align: center;
     font-size: 25px;
     
@@ -49,16 +66,27 @@ body {
 }
 
 .simple{
-    border: 3px solid black;
     grid-area: simple;
-    color: red;
-    text-shadow: 1px 1px black;    
-    margin-top: 30px;    
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+    margin-top: 30px; 
 }
 .mekUpgrade {
-    border: 3px solid black;    
     grid-area: mek;
-    color: red;
-    text-shadow: 1px 1px black;    
-    margin-top: 30px;    
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+    margin-top: 30px; 
+}
+
+.gunz1 {
+    height: 100px;
+    float: right;
+    padding: 5px;    
+}
+h1 {
+    grid-area: h1;
+    margin: auto;
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+
 }

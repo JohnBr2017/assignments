@@ -5,9 +5,8 @@
 body {
     display: grid;
     grid-column: 1fr 4fr 1fr;
-    /* background-color: black; */
     background-image: url("https://i.pinimg.com/736x/f3/61/87/f361873e3638a12d78334402004c49ea--warhammer-fantasy-warhammer-k.jpg");
-    background-position: fixed;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100vw; 
     width: 80%;
@@ -17,7 +16,6 @@ body {
     ". info ."
 /* add @media to change background to just be badrukk when below 1150px */
 }
-
 .navbar {
     grid-area: nav;
     display: grid;
@@ -28,11 +26,10 @@ body {
 
 .link1, .link2, .link3 {
     font-family: 'Times New Roman', Times, serif;    
-    color: orangered;
-    text-shadow: 1px 1px black;    
+    color: black;
+    text-shadow: 1px 1px orangered;    
     text-align: center;
-    font-size: 25px;
-    
+    font-size: 25px;    
 }
 .link1 {
     grid-area: l1;
@@ -49,8 +46,8 @@ body {
 
 .info {
     grid-area: info;
-    color: red;
-    text-shadow: 1px 1px black;    
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
     margin-top: 30px;    
     display: grid;
     grid-column: 2fr 2fr 2fr;
@@ -60,7 +57,6 @@ body {
     "range range ."
     ". melee melee"
     "last last last"
-
 }
 .gunz1, .melee1 {
     float: left;
@@ -83,8 +79,8 @@ body {
 .end {
     grid-area: last;
     border: 2px solid black;
-    color: red;
-    text-shadow: 1px 1px black;
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
     font-size: 20px;    
     width: 80%;
     margin: auto;
@@ -93,6 +89,25 @@ body {
     background-repeat: no-repeat;
     background-size: 80vw; 
 }
+@media (max-width: 1050px){
+    body{
+        background-image: url("Badrukk.jpg");
+        background-attachment: fixed;
+    }
+    .info {
+        grid-template-areas: 
+        "h1 h1 h1"
+        "h2 h2 h2"
+        "range range range"
+        "melee melee melee"
+        "last last last"
+    }
+    .end{
+        background-image: none;
+
+    }
+}
+
 h1 {
     grid-area: h1;
     margin: auto;

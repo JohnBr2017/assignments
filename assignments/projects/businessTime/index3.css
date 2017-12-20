@@ -5,17 +5,38 @@
 body {
     display: grid;
     grid-column: 1fr 4fr 1fr;
-    /* background-color: black; */
     background-image: url("https://i.pinimg.com/736x/f3/61/87/f361873e3638a12d78334402004c49ea--warhammer-fantasy-warhammer-k.jpg");
-    background-position: fixed;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100vw; 
     width: 80%;
     margin: auto;
     grid-template-areas: 
     "nav nav nav"
-    ". info ."
+    "h1 h1 h1"
+    ". simple  simple"
+    "mek mek ."
 /* add @media to change background to just be badrukk when below 1150px */
+}
+@media (max-width: 1050px){
+    body {
+        background-image: url("Badrukk.jpg");
+        background-attachment: fixed;
+        grid-template-areas: 
+        "nav nav nav"
+        "h1 h1 h1"
+        "simple simple simple"
+        "mek mek mek"    
+    }
+    .simple .melee {
+        height: 100px;
+    }
+    .simple .melee1 {
+        height: 175px;
+    }      
+    .mekUpgrade .melee {
+        height: 100px;
+    }    
 }
 
 .navbar {
@@ -28,11 +49,10 @@ body {
 
 .link1, .link2, .link3 {
     font-family: 'Times New Roman', Times, serif;    
-    color: orangered;
-    text-shadow: 1px 1px black;    
+    color: black;
+    text-shadow: 1px 1px orangered;    
     text-align: center;
-    font-size: 25px;
-    
+    font-size: 25px; 
 }
 .link1 {
     grid-area: l1;
@@ -46,60 +66,34 @@ body {
     grid-area: l3;
     
 }
-
-.info {
-    grid-area: info;
-    color: red;
-    text-shadow: 1px 1px black;    
-    margin-top: 30px;    
-    display: grid;
-    grid-column: 2fr 2fr 2fr;
-    grid-template-areas:
-    "h1 h1 h1"
-    "h2 . ."
-    "range range ."
-    ". melee melee"
-    "last last last"
-
+.simple{
+    grid-area: simple;
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+    margin-top: 30px; 
 }
-.gunz1, .melee1 {
-    float: left;
-    height: 100px;
-    padding: 10px;
-}
-.gunz2, .melee2 {
-    float: right;
-    height: 120px;
-    padding: 10px;
-}
-.range {
-    grid-area: range;
-    font-size: 20px;
+.mekUpgrade {
+    grid-area: mek;
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+    margin-top: 30px; 
 }
 .melee {
-    grid-area: melee;
-    font-size: 20px;    
+    display: block;
+    float: left;
+    height: 150px;
+    padding: 5px;
 }
-.end {
-    grid-area: last;
-    border: 2px solid black;
-    color: red;
-    text-shadow: 1px 1px black;
-    font-size: 20px;    
-    width: 80%;
-    margin: auto;
-    background-image: url("Badrukk.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 80vw; 
+.melee1 {
+    display: block;
+    float: right;
+    height: 250px;
+    padding: 5px;
 }
 h1 {
     grid-area: h1;
     margin: auto;
-}
-h2 {
-    grid-area: h2
-}
-.kaptin {
-    font-size: 24px;
+    color: black;
+    text-shadow: 1px 1px forestgreen;    
+
 }
