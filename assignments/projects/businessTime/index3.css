@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-column: 1fr 4fr 1fr;
+    /* background-color: black; */
+    background-image: url("https://i.pinimg.com/736x/f3/61/87/f361873e3638a12d78334402004c49ea--warhammer-fantasy-warhammer-k.jpg");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: 100vw; 
+    width: 80%;
+    margin: auto;
+    grid-template-areas: 
+    "nav nav nav"
+    ". info ."
+/* add @media to change background to just be badrukk when below 1150px */
+}
+
+.navbar {
+    grid-area: nav;
+    display: grid;
+    grid-column: 2fr 2fr 2fr;
+    grid-template-areas:
+    "l1 l2 l3"
+}
+
+.link1, .link2, .link3 {
+    font-family: 'Times New Roman', Times, serif;    
+    color: orangered;
+    text-shadow: 1px 1px black;    
+    text-align: center;
+    font-size: 25px;
+    
+}
+.link1 {
+    grid-area: l1;
+    
+}
+.link2  {
+    grid-area: l2;
+    
+}
+.link3  {
+    grid-area: l3;
+    
+}
+
+.info {
+    grid-area: info;
+    color: red;
+    text-shadow: 1px 1px black;    
+    margin-top: 30px;    
+    display: grid;
+    grid-column: 2fr 2fr 2fr;
+    grid-template-areas:
+    "h1 h1 h1"
+    "h2 . ."
+    "range range ."
+    ". melee melee"
+    "last last last"
+
+}
+.gunz1, .melee1 {
+    float: left;
+    height: 100px;
+    padding: 10px;
+}
+.gunz2, .melee2 {
+    float: right;
+    height: 120px;
+    padding: 10px;
+}
+.range {
+    grid-area: range;
+    font-size: 20px;
+}
+.melee {
+    grid-area: melee;
+    font-size: 20px;    
+}
+.end {
+    grid-area: last;
+    border: 2px solid black;
+    color: red;
+    text-shadow: 1px 1px black;
+    font-size: 20px;    
+    width: 80%;
+    margin: auto;
+    background-image: url("Badrukk.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80vw; 
+}
+h1 {
+    grid-area: h1;
+    margin: auto;
+}
+h2 {
+    grid-area: h2
+}
+.kaptin {
+    font-size: 24px;
+}

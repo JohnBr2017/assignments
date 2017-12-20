@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-column: 1fr 4fr 1fr;
+    /* background-color: black; */
+    background-image: url("https://i.pinimg.com/736x/f3/61/87/f361873e3638a12d78334402004c49ea--warhammer-fantasy-warhammer-k.jpg");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: 100vw; 
+    width: 80%;
+    margin: auto;
+    grid-template-areas: 
+    "nav nav nav"
+    "simple simple ."
+    ". mek mek"
+/* add @media to change background to just be badrukk when below 1150px */
+}
+
+.navbar {
+    grid-area: nav;
+    display: grid;
+    grid-column: 2fr 2fr 2fr;
+    grid-template-areas:
+    "l1 l2 l3"
+}
+
+.link1, .link2, .link3 {
+    font-family: 'Times New Roman', Times, serif;    
+    color: orangered;
+    text-shadow: 1px 1px black;    
+    text-align: center;
+    font-size: 25px;
+    
+}
+.link1 {
+    grid-area: l1;
+    
+}
+.link2  {
+    grid-area: l2;
+    
+}
+.link3  {
+    grid-area: l3;
+    
+}
+
+.simple{
+    border: 3px solid black;
+    grid-area: simple;
+    color: red;
+    text-shadow: 1px 1px black;    
+    margin-top: 30px;    
+}
+.mekUpgrade {
+    border: 3px solid black;    
+    grid-area: mek;
+    color: red;
+    text-shadow: 1px 1px black;    
+    margin-top: 30px;    
+}
