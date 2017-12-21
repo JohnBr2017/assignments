@@ -62,34 +62,3 @@ describe("These should sort with correct results", () => {
         assert.deepEqual(byAge(tests.case3), ageSorted)
     })
 })
-// 1) Sort an array from smallest number to largest
-// leastToGreatest([1, 3, 5, 2, 90, 20]) // [1, 2, 3, 5, 20, 90]  
-
-// 2) Sort an array from largest number to smallest
-// greatestToLeast([1, 3, 5, 2, 90, 20]) // [90, 20, 5, 3, 2, 1]  
-
-// 3) Sort an array from shortest string to longest
-// lengthSort(["dog", "wolf", "by", "family", "eaten"]) // ["by", "dog", "wolf", "eaten", "family"]  
-
-// 4) Sort an array alphabetically
-// alphabetical(["dog", "wolf", "by", "family", "eaten"]) // ["by", "dog", "eaten", "family", "wolf"]  
-
-// byAge([  
-//   {
-//     name: "Quiet Samurai",
-//     age: 22
-//   },{
-//     name: "Arrogant Ambassador",
-//     age: 100
-//   },{
-//     name: "Misunderstood Observer",
-//     age: 2
-//   },{
-//     name: "Unlucky Swami",
-//     age: 77
-//   }
-// ])
-
-
-
-
