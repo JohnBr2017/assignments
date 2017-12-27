@@ -31,3 +31,16 @@
 // salsaBtn.onclick = addToCart;
 // milkBtn.onclick = addToCart;
 // beerBtn.onclick = addToCart;
+
+let clickCounter = () => {
+    if (typeof(Storage) !== "undefined") {
+        if (localStorage.clkCnt) {
+            localStorage.clkCnt = Number(localStorage.clkCnt) + 1;
+        } else {
+            localStorage.clkCnt = 1;
+        }
+        document.getElementById("result").innerHTML = "You've clicked " + localStorage.clkCnt + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Your browser sucks!"
+    }
+}
