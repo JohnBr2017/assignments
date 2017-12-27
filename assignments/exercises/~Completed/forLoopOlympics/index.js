@@ -55,8 +55,9 @@ var peopleArray = [
     }
 ]
 
-
-for (o = 0; o < peopleArray.length; o++) {
-
-console.log(peopleArray.name()[o])
+function justNames(){
+    let str = "";
+    let names = peopleArray.name;
+    return;
 }
+console.log(justNames())

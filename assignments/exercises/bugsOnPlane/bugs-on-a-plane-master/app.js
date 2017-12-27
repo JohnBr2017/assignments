@@ -10,7 +10,7 @@ function formAlert() {
     var location = form.elements["travel-location"].value;
     var diet = {};
     if (form.elements['vegan'].checked) {
-        diet.pop(document.getElementById("vegan").value);
+        diet.push(document.getElementById("vegan").value);
     }
     if (form.elements['gluten'].checked) {
         diet.push(document.getElementById('gluten').value);
@@ -23,5 +23,5 @@ function formAlert() {
     alert("First Name: " + firstName + "\nLast Name: " + lastName + "\nAge: " + age + "\nGender: " + gender + "\nTravel Location: " + location + "\nDiet: " + diet + "\nAwesome, now if you die, it won't be an accident..");
 }
 
-
-submit.addEventListener("click", alert);
+console.log(formAlert())
+submit.addEventListener("click", formAlert());
