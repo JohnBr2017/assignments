@@ -1,18 +1,18 @@
-// function cipher(str, shift) {
-//     let output = "";
-//     shift = shift % 26;
-//     for (let i = 0; i < str.length; i++) {
-//         output += String.fromCharCode((str.charCodeAt(i) + shift) % 122+ 97);
-//     }
-//     return output;
-// }
-// console.log(cipher("xyz", 1))
+function cipher(str, shift) {
+	let output = "";
+	shift = shift % 26;
+	for (let i = 0; i < str.length; i++) {
+		output += String.fromCharCode((str.charCodeAt(i) + shift) % 122 + 97);
+	}
+	return output;
+}
+console.log(cipher("xyz", 10))
 
-var caesarShift = function(str, amount) {
+var caesarShift = function (str, amount) {
 	if (amount < 0)
 		return caesarShift(str, amount + 26);
 	var output = '';
-	for (var i = 0; i < str.length; i ++) {
+	for (var i = 0; i < str.length; i++) {
 		var c = str[i];
 		if (c.match(/[a-z]/i)) {
 			var code = str.charCodeAt(i);
@@ -25,4 +25,4 @@ var caesarShift = function(str, amount) {
 	}
 	return output;
 };
-console.log(caesarShift("Vus was here", 11))
+console.log(caesarShift("xyz", 10))
