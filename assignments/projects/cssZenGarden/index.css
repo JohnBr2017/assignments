@@ -1,0 +1,79 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    border: 1px dotted black;
+}
+body {
+    position: relative;
+}
+.wrapper {
+    padding: 20px 0 70px 0;
+    display: grid;
+    grid-template-rows: 140px 70px 600px 600px 600px 220px 120px 320px 200px ;
+    grid-template-areas: 
+    "head"
+    "subHead"
+    "cont1"
+    "cont2"
+    "cont3"
+    "foot"
+    "subFoot"
+    "sidebar"
+    "menus";
+}
+header {
+    grid-area: head;
+}
+.subHeader {
+    grid-area: subHead;
+}
+.cont1{
+    grid-area: cont1;
+}
+.cont2 {
+    grid-area: cont2;
+}
+.cont3 {
+    grid-area: cont3;
+}
+footer {
+    grid-area: foot;
+}
+.subFooter {
+    grid-area: subFoot;
+}
+.sidebar {
+    grid-area: sidebar;
+}
+.menu {
+    grid-area: menus;
+}
+.headerImage {
+    background-image: 
+    url("http://www.csszengarden.com/214/contours@2x.png"), url("http://www.csszengarden.com/214/noise.png"), url("http://www.csszengarden.com/214/gridlines.png"), url("http://www.csszengarden.com/214/huntington.jpg");
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 230px;
+    background-size: 50% auto, auto, auto, cover;
+    background-position: 0 0, 0 0, -5px -25px, 0 50%;
+    z-index: -1;
+}
+@media screen and (min-width: 1132px){
+    .wrapper {
+    padding: 20px 0 70px 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 310px 1070px 820px 860px 320px 180px;
+    grid-template-areas: 
+    "head subHead"
+    "cont1 sidebar"
+    "cont2 menus"
+    "cont3 ."
+    "foot foot"
+    "subFoot subFoot"
+    }
+    .headerImage{
+        height: 330px;
+    }
+}
