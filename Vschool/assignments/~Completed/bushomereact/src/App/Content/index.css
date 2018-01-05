@@ -1,0 +1,21 @@
+.cont {
+    grid-area: cont;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    "innerCont innerCont innerCont"
+    "innerCont innerCont innerCont"
+}
+
+img {
+    height: 200px;
+    margin: auto;
+   vertical-align: center
+}
+
+h4, h5, h6 {
+    color: grey;
+    text-shadow: 1px 1px black;
+    text-align: center;
+}
+

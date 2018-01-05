@@ -1,0 +1,13 @@
+.head {
+    grid-area: head;
+}
+
+h1 {
+    width: 80%;
+    margin: auto;
+}
+
+h2 {
+    width: 60%;
+    margin: auto;
+}

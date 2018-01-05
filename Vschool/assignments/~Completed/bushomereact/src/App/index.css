@@ -1,0 +1,12 @@
+.wrapper{
+    background-image: url("https://fc07.deviantart.net/fs71/f/2013/107/f/2/the_armor_shop_by_sweetmoon-d622tbg.jpg");
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 40px 80px 300px 300px 20px;
+    grid-template-areas: 
+    "nav"
+    "head"
+    "cont"
+    "cont"
+    "foot"
+}
