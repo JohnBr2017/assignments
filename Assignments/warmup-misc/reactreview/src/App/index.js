@@ -1,16 +1,12 @@
-import React, { Component } from "react";
-import DecorList from "./DecorList"
-
+import React from "react";
+import DecorList from "./DecorList";
 
 function App(props){
-    return(
-        <div>
-            <DecorList/>
-        </div>
-    )
+   return (
+       <div>
+           <DecorList></DecorList>
+       </div>
+   ) 
 }
-
-
-
 
 export default App;

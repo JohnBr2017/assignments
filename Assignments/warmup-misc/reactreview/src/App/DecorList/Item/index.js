@@ -1,19 +1,17 @@
-import React, { Component } from "react";
+import React from 'react';
+import EditForm from "./EditForm";
 
-
-function Item(props){
-    let { size, type, color} = props;
-    return(
+function Item(props) {
+    let { size, type, color, deleteItem, index, editItem } = props;
+    return (
         <div>
             <h3>{type}</h3>
-            <h4>{color}</h4>
-            <h4>{size}</h4>
+            <p>{color}</p>
+            <p>{size}</p>
+            <button onClick={() => deleteItem(index)}>X</button>
+            <EditForm {...props}></EditForm>
         </div>
     )
 }
-
-
-
-
 
 export default Item;

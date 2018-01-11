@@ -1,13 +1,15 @@
-import React, {Component} from "react";
+import React from "react";
+import Name from "./Name";
 
 
-class App extends Component{
-    render(){
-        return (
-            <div>
-            </div>
-        )
-    }
+function App(props){
+    return (
+        <div>
+            <Name/>
+        </div>
+    )
 }
+
+
 
 export default App;
