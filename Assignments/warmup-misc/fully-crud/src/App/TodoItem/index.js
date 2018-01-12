@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Loading from "../shared/Loading";
+import Form from "../shared/Form"
 
 import axios from "axios";
 
@@ -11,9 +12,12 @@ export default class TodoItem extends Component {
         super(props);
         this.state = {
             todo: {},
-            loading: true
+            loading: true,
+            displayForm: false
         }
         this.removeItem = this.removeItem.bind(this);
+        this.toggleDisplay = this.toggleDisplay.bind(this);
+        this.editTodo = this.editTodo.bind(this);
     }
     componentDidMount() {
         let { id } = this.props.match.params;
@@ -46,10 +50,32 @@ export default class TodoItem extends Component {
                 history.push("/");
             })
     }
+    toggleDisplay() {
+        this.setState((prevState) => {
+            return {
+                displayForm: !prevState.displayForm
+            }
+        })
+    }
+    editTodo(todo) {
+        let { id } = this.props.match.params;
+        axios.put(todoItemUrl + id, todo)
+            .then((response)=>{
+                let {data}= response;
+                this.setState({
+                    todo: data,
+                    displayForm: false
+                })
+            })
+            .catch((err)=>{
+                console.error(err);
+            })
+    }
     render() {
-        let { todo, loading } = this.state;
+        let { todo, loading, displayForm } = this.state;
         let { title, description, price, completed, imgUrl } = todo;
         let style = { backgroundImage: `url(${imgUrl})` };
+        let formStyle = { display: displayForm ? "initial" : "none" }
         return (
             loading ?
                 <Loading></Loading>
@@ -60,6 +86,10 @@ export default class TodoItem extends Component {
                     <p>Completed: {String(completed)}</p>
                     <p>Description: {description}</p>
                     <button onClick={this.removeItem}>X</button>
+                    <button onClick={this.toggleDisplay}>Edit</button>
+                    <div style={formStyle}>
+                        <Form {...todo} submit={this.editTodo}></Form>
+                    </div>
                 </div>
         )
     }

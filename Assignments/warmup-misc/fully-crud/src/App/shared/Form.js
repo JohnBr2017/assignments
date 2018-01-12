@@ -42,7 +42,7 @@ export default class Form extends Component {
         e.preventDefault();
         let todo = { ...this.state.inputs };
         todo.price = Number(todo.price);
-        this.props.submit(todo, this.props.id);
+        this.props.submit(todo);
         if (this.props.clear) this.clearInputs();
     }
     render() {
