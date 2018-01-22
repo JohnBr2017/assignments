@@ -46,7 +46,7 @@ class DecorList extends Component {
                 <Form submit={this.addItem}></Form>
                 {items.map((item, i) => {
                     return (
-                        <Item index={i} editItem={this.editItem}deleteItem={this.deleteItem} key={i}{...item}></Item>
+                        <Item index={i} editItem={this.editItem} deleteItem={this.deleteItem} key={i}{...item}></Item>
                     )
                 })}
             </div>

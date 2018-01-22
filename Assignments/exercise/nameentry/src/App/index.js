@@ -1,15 +1,14 @@
 import React from "react";
-import Name from "./Name";
-
+import Form from "./NameForm";
+import Name from "./NameForm/Names"
 
 function App(props){
-    return (
-        <div>
-            <Name/>
-        </div>
-    )
+   return (
+      <div>
+      <Form></Form>
+        <Name></Name>
+      </div>
+   ) 
 }
-
-
 
 export default App;

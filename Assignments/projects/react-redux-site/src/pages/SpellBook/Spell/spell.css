@@ -1,0 +1,64 @@
+.spells {
+    font-family: fantasy;
+    text-shadow: 1px 1px forestgreen;
+    color: black;
+    background-image: url("../../../images/oldPage.jpg");
+    /* background-size: 100vw; */
+    padding: 10px;
+    display: grid;
+    border: 1px dotted black;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 60px);
+    grid-template-areas: 
+    "nam nam nam . ."
+    "lev . sch . pag"
+    "cas cas cas . ."
+    "ran ran . rit ."
+    "com com . mat mat"
+    "dur dur dur con con"
+    "des des des des des"
+    "hig hig hig hig hig"
+}
+
+.name {
+    grid-area: nam;
+}
+.page {
+    grid-area: pag;
+}
+.range {
+    grid-area: ran;
+}
+.components {
+    grid-area: com;
+}
+.materials {
+    grid-area: mat;
+}
+.rituals {
+    grid-area: rit;
+}
+.duration {
+    grid-area: dur;
+}
+.concentration {
+    grid-area: con;
+}
+.castingTime {
+    grid-area: cas;
+}
+.classes {
+    grid-area: cla;
+}
+.level {
+    grid-area: lev;
+}
+.school {
+    grid-area: sch;
+}
+.description {
+    grid-area: des;
+}
+.higher_level {
+    grid-area: hig;
+}

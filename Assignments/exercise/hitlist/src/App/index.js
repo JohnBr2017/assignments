@@ -1,12 +1,11 @@
-import React, {Component} from "react";
-
+import React, { Component } from "react";
 import HitList from "./HitList"
 
-class App extends Component{
-    render(){
+class App extends Component {
+    render() {
         return (
             <div>
-            <HitList></HitList>
+                <HitList></HitList>
             </div>
         )
     }

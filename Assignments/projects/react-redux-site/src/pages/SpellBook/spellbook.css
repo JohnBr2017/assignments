@@ -1,0 +1,16 @@
+.spellBook{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid red;
+}
+.spellOptions{
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+select{
+    background-color: yellowgreen;
+}

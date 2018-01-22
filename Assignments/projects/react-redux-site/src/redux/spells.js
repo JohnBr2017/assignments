@@ -1,31 +1,29 @@
 import axios from "axios";
 
-export function getStarships() {
+export function getSpellList() {
     return dispatch => {
         dispatch({
             type: "IS_LOADING"
         })
-        axios.get("https://swapi.cocr/api/starships/")
+        axios.get("http://dnd5eapi.co/api/spells")
             .then(response => {
                 dispatch({
-                    type: "GET_STARSHIPS",
+                    type: "GET_SPELL_LIST",
                     payload: response.data.results
                 });
             });
     }
-    // return {
-    //     type: "GET_STARSHIPS",
-    //     payload: data
-    // }
 }
 
-const reducer = (state = [], action) => {
+
+const spells = (state = [], action) => {
     switch (action.type) {
-        case "GET_STARSHIPS":
+        case "GET_SPELL_LIST":
             return action.payload
         default:
             return state;
     }
 }
 
-export default reducer;
+
+export default spells;
