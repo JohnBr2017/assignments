@@ -54,10 +54,20 @@ var peopleArray = [
         occupation: "Entertainer"
     }
 ]
-
-function justNames(){
-    let str = "";
-    let names = peopleArray.name;
-    return;
+    let names= [];
+    let occupations= []
+for (var i = 0; i < peopleArray.length; i++) {
+    names.push(peopleArray[i].name);
+    occupations.push(peopleArray[i].occupation);
+    
 }
-console.log(justNames())
+console.log(names)
+
+// var peopleNames = []
+// var peopleOccupations = []
+// for (var i = 0; i < peopleArray.length; i++) {
+//         peopleNames.push(peopleArray[i].name);
+//         peopleOccupations.push(peopleArray[i].occupation);
+// }
+// console.log(peopleNames);
+// console.log(peopleOccupations)

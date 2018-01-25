@@ -3,26 +3,51 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getSpellList } from "../../redux/spells.js";
-import { getFilteredSpell} from "../../redux/filter";
+import { getFilteredSpell } from "../../redux/filter";
 import Spell from "./Spell";
 import "./spellbook.css";
+import Background from "../../images/openBook.jpg"
+
+let backgroundStyle = {
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "80vw",
+    backgroundImage: `url(${Background})`
+};
 
 class SpellBook extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            school: "all",
+            level: 10,
+            classes: "all"
+        };
+    }
     componentDidMount() {
         this.props.getSpellList();
     }
-
-    handleChange(e){
-
+    filterSchool = (e) => {
+        let { value } = e.target;
+        this.setState({ school: value });
     }
-
+    filterLevel = (e) => {
+        let { value } = e.target;
+        value = Number(value);
+        this.setState({ level: value });
+    }
+    filterClass = (e) => {
+        let { value } = e.target;
+        this.setState({ classes: value });
+    }
     render() {
         let { spellList } = this.props;
         return (
-            <div>
+            <div className="book" style= { backgroundStyle }>
                 <div className="spellOptions">
-                    <select>
-                        <option value="noClass">Class</option>
+                    
+                    <select className="classSelection" onChange={this.filterClass}>
+                        <option value="all">Class</option>
                         <option value="Bard">Bard</option>
                         <option value="Cleric">Cleric</option>
                         <option value="Druid">Druid</option>
@@ -32,21 +57,21 @@ class SpellBook extends Component {
                         <option value="Warlock">Warlock</option>
                         <option value="Wizard">Wizard</option>
                     </select>
-                    <select>
-                        <option value="noLevel">Spell Level</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                    <select className="levelSelection" onChange={this.filterLevel}>
+                        <option value={10}>Spell Level</option>
+                        <option value="0">Cantrip</option>
+                        <option value="1">Level: 1</option>
+                        <option value="2">Level: 2</option>
+                        <option value="3">Level: 3</option>
+                        <option value="4">Level: 4</option>
+                        <option value="5">Level: 5</option>
+                        <option value="6">Level: 6</option>
+                        <option value="7">Level: 7</option>
+                        <option value="8">Level: 8</option>
+                        <option value="9">Level: 9</option>
                     </select>
-                    <select>
-                    <option value="noSchool">School</option>
+                    <select className="schoolSelection" onChange={this.filterSchool}>
+                        <option value="all">School</option>
                         <option value="Abjuration">Abjuration</option>
                         <option value="Conjuration">Conjuration</option>
                         <option value="Divination">Divination</option>
@@ -57,11 +82,10 @@ class SpellBook extends Component {
                         <option value="Transmutation">Transmutation</option>
                     </select>
                 </div>
-                <div className="spellBook" >
-                {/* add filter before map */}
+                <div className="spellBook"  >
                     {spellList.map((spell, i) => {
                         let { url, name } = spell;
-                        return <Spell key={i} name={name} url={url}>{name}</Spell>
+                        return <Spell key={i} name={name} url={url} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes}></Spell>
                     })}
                 </div>
             </div>
@@ -88,15 +112,6 @@ export default connect(mapStateToProps, { getSpellList, getFilteredSpell })(Spel
 
 
 
-//     render() {
-//         const spellList = this.props.spellList.map(spell => <h1 key={spell.name}>{spell.name} </h1>)
-//         return (
-//             <div>
-//                 {spellList}
-//             </div>
-//         )
-//     }
-// }
 
 
 

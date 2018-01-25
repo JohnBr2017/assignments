@@ -7,21 +7,20 @@ import Navbar from "./Navbar";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import SpellBook from "..//pages/SpellBook";
-// import DMBook from "../pages/DMBook"
 
+import "./app.css"
 
 
 
 
 function App(props) {
     return (
-        <div>
+        <div  >
             <Navbar />
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
                 <Route path='/spellbook' component={SpellBook}/>
-                {/* <Route path='/dmbook' component={DMBook}/> */}
             </Switch>
         </div>
     )

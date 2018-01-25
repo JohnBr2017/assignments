@@ -19,17 +19,22 @@ class Spell extends Component {
             duration: "",
             concentration: "",
             casting_time: "",
-            level: "",
+            level: "all",
             school: "",
-            classes: "",
+            classes1: "",
+            classes2: "",
+            classes3: "",
+            classes4: "",
+            classes5: "",
+            classes6: "",
             subclasses: ""
         }
+
     }
     componentDidMount() {
         axios.get(this.props.url)
             .then((response) => {
                 let results = response.data;
-                console.log(results.desc)
                 this.setState({
                     desc: results.desc,
                     higher_level: results.higher_level || [],
@@ -43,34 +48,54 @@ class Spell extends Component {
                     casting_time: results.casting_time,
                     level: results.level,
                     school: results.school.name,
-                    classes: results.classes[0].name,
+                    classes1: results.classes[0] || [],
+                    classes2: results.classes[1] || [],
+                    classes3: results.classes[2] || [],
+                    classes4: results.classes[3] || [],
+                    classes5: results.classes[4] || [],
+                    classes6: results.classes[5] || [],
                     subclasses: results.subclasses.name
                 })
             })
             .catch((err) => {
                 console.error(err);
-            })
+            });
+
     }
     render() {
-        let { name } = this.props;
-        let { page, range, components, material, ritual, duration, concentration, casting_time, level, school, desc, higher_level } = this.state;
-        return (
-            <div className="spells" >
-                <h1 className="name" >{name}</h1>
-                <p className="page" >Page: {page}</p>
-                <p className="range" >Range: {range}</p>
-                <p className="components" >Components: {components}</p>
-                <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
-                <p className="rituals" >Rituals: {ritual}</p>
-                <p className="duration" >Duration: {duration}</p>
-                <p className="concentration" >Concentration: {concentration}</p>
-                <p className="castingTime" >Casting Time: {casting_time}</p>
-                <p className="level" >Level: {level}</p>
-                <p className="school" >{school}</p>
-                <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div>
-                <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
-            </div>
-        )
+        let { name, schoolFilter, levelFilter, classFilter } = this.props;
+        let { classes1, classes2, classes3, classes4, classes5, classes6, page, range, components, material, ritual, duration, concentration, casting_time, school, level, desc, higher_level } = this.state;
+        if ((schoolFilter === school || schoolFilter === "all")
+            && (levelFilter === level || levelFilter === 10)
+            && (classFilter === classes1.name
+                || classFilter === classes2.name
+                || classFilter === classes3.name
+                || classFilter === classes4.name
+                || classFilter === classes5.name
+                || classFilter === classes6.name
+                || classFilter === "all")
+        ) {
+            return (
+                <div className="spells" >
+                    <h1 className="name" >{name}</h1>
+                    <p className="page" >Pg: {page}</p>
+                    <p className="range" >Range: {range}</p>
+                    <p className="components" >Components: {components}</p>
+                    <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
+                    <p className="rituals" >Rituals: {ritual}</p>
+                    <p className="duration" >Duration: {duration}</p>
+                    <p className="concentration" >Concentration: {concentration}</p>
+                    <p className="castingTime" >Casting Time: {casting_time}</p>
+                    <p className="level" >Level: {level}</p>
+                    <p className="school" >{school}</p>
+                    <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div>
+                    <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
+                </div>
+            )
+        } else {
+            return null;
+        }
+
     }
 }
 

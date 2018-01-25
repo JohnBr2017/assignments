@@ -1,0 +1,6 @@
+body {
+    background-image: url("../images/magicShop.jpg");
+    /* width: 100vw; */
+    background-attachment: fixed;
+    background-size: cover;
+}
