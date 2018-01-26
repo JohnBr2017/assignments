@@ -1,100 +1,119 @@
 .spells {
     font-family: fantasy;
-    text-shadow: 1px 1px green;
+    text-shadow: 1px 1px maroon;
     color: black;
     padding: 50px;
     display: grid;
     overflow: scroll;
-    height: 700px;
+    height: 500px;
     /* border: 1px solid rebeccapurple; */
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px) auto;
     grid-template-areas: 
     "nam nam nam nam nam"
-    "sch . lev . pag"
-    "cas cas cas rit rit"
-    "dur dur dur con con"
-    "ran ran . com com"
-    "mat mat mat mat mat"
-    "des des des des des"
+    "sch . lev . pag" 
+    "cas cas cas rit rit" 
+    "dur dur dur con con" 
+    "ran ran . com com" 
+    "mat mat mat mat mat" 
+    "des des des des des" 
     "hig hig hig hig hig"
 }
-.spells:hover:nth-child(3n+0){
+.spells:hover:nth-child(3n+0) {
     border-radius: 50px;
-    padding: 30px;
-    transition-duration: 3s;
-    border: 3px groove green;
+    transition-duration: 2s;
+    border: 4px groove green;
     border-style: outset;
-    background-image: url("../../../images/greenFire.jpg");
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
     background-size: cover;
-    color: magenta;
-    text-shadow: 1px 1px black, 10px 10px black;
-}
-.spells:hover:nth-child(3n+1){
-    border-radius: 50px;
-    padding: 30px;
-    transition-duration: 3s;
-    border: 3x groove blue;
-    border-style: outset;
-    background-image: url("../../../images/blueFire.jpeg");
-    background-size: cover;
-    color: yellow;
-    text-shadow: 1px 1px black, 10px 10px black;
-}
-.spells:hover:nth-child(3n+2){
-    border-radius: 50px;
-    padding: 30px;
-    transition-duration: 3s;
-    border: 3px groove red;
-    border-style: outset;
-    background-image: url("../../../images/redFire.jpeg");
-    background-size: cover;
-    color: cyan;
-    text-shadow: 1px 1px black, 10px 10px black;
+    background-color: green;
+    background-blend-mode: luminosity;
+    color: red;
+    text-shadow: .5px .5px purple, 1.5px 1.5px black
 }
 
+.spells:hover:nth-child(3n+1) {
+    border-radius: 50px;
+    transition-duration: 2s;
+    border: 4px groove blue;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-color: blue;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    color: orange;
+    text-shadow: .5px .5px yellow, 1.5px 1.5px black
+}
 
+.spells:hover:nth-child(3n+2) {
+    border-radius: 50px;
+    transition-duration: 2s;
+    border: 4px groove red;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-color: purple;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    color: green;
+    text-shadow: .5px .5px greenyellow, 1.5px 1.5px black
+}
 
 .name {
     grid-area: nam;
-    
 }
+
 .page {
     grid-area: pag;
 }
+
 .range {
     grid-area: ran;
 }
+
 .components {
     grid-area: com;
 }
+
 .materials {
     grid-area: mat;
 }
+
 .rituals {
     grid-area: rit;
 }
+
 .duration {
     grid-area: dur;
 }
+
 .concentration {
     grid-area: con;
 }
+
 .castingTime {
     grid-area: cas;
 }
+
 .classes {
     grid-area: cla;
 }
+
 .level {
     grid-area: lev;
 }
+
 .school {
     grid-area: sch;
 }
+
 .description {
     grid-area: des;
+    text-indent: 25px;
 }
+
 .higher_level {
     grid-area: hig;
+    text-indent: 25px;
 }
+
+

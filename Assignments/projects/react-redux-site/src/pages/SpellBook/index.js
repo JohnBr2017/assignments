@@ -6,13 +6,6 @@ import { getSpellList } from "../../redux/spells.js";
 import { getFilteredSpell } from "../../redux/filter";
 import Spell from "./Spell";
 import "./spellbook.css";
-import Background from "../../images/openBook.jpg"
-
-let backgroundStyle = {
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "80vw",
-    backgroundImage: `url(${Background})`
-};
 
 class SpellBook extends Component {
     constructor() {
@@ -43,7 +36,7 @@ class SpellBook extends Component {
     render() {
         let { spellList } = this.props;
         return (
-            <div className="book" style= { backgroundStyle }>
+            <div className="book">
                 <div className="spellOptions">
                     
                     <select className="classSelection" onChange={this.filterClass}>

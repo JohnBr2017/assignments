@@ -60,11 +60,11 @@ class Spell extends Component {
             .catch((err) => {
                 console.error(err);
             });
-
     }
     render() {
         let { name, schoolFilter, levelFilter, classFilter } = this.props;
-        let { classes1, classes2, classes3, classes4, classes5, classes6, page, range, components, material, ritual, duration, concentration, casting_time, school, level, desc, higher_level } = this.state;
+        let { classes1, classes2, classes3, classes4, classes5, classes6, page, range, components, material, ritual, duration, concentration,   casting_time, school, level, desc, higher_level } = this.state;
+        console.log(name)
         if ((schoolFilter === school || schoolFilter === "all")
             && (levelFilter === level || levelFilter === 10)
             && (classFilter === classes1.name
@@ -73,23 +73,25 @@ class Spell extends Component {
                 || classFilter === classes4.name
                 || classFilter === classes5.name
                 || classFilter === classes6.name
-                || classFilter === "all")
-        ) {
+                || classFilter === "all")) {
             return (
                 <div className="spells" >
                     <h1 className="name" >{name}</h1>
                     <p className="page" >Pg: {page}</p>
                     <p className="range" >Range: {range}</p>
                     <p className="components" >Components: {components}</p>
-                    <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
+                    <p className="materials" >Materials: {material.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
+                    {/* <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
                     <p className="rituals" >Rituals: {ritual}</p>
                     <p className="duration" >Duration: {duration}</p>
                     <p className="concentration" >Concentration: {concentration}</p>
                     <p className="castingTime" >Casting Time: {casting_time}</p>
                     <p className="level" >Level: {level}</p>
                     <p className="school" >{school}</p>
-                    <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div>
-                    <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>
+                    <div className="description">{desc.map(x => <p>{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
+                    {/* <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div> */}
+                    <p className="higher_level" >HL: {higher_level.join("\n").replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
+                    {/* <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
                 </div>
             )
         } else {
@@ -101,4 +103,5 @@ class Spell extends Component {
 
 
 
-export default Spell; 
+export default Spell;
+

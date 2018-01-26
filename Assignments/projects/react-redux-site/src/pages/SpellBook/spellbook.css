@@ -1,18 +1,25 @@
 .spellBook {
-    width: 90%;
+    width: 100%;
     display: grid;
     margin: auto;
     grid-template-columns: repeat(2, 1fr);
     position: sticky;
     /* border: 2px solid red; */
+
 }
 
 .book {
     border: 20px solid black;
+    border-radius: 65px;
     margin: auto;
     width: 80%;
+    height: 80%;
     background-attachment: fixed;
     background-position: center;
+    background-image: url("../../images/openBook.jpg");
+    background-repeat: repeat-y;
+    background-size: 80vw;
+    overflow: auto;
 }
 
 .spellOptions {
@@ -24,11 +31,35 @@
 }
 
 select {
-    background-color: black;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/blueEnergy.gif");
+    background-size: cover;
+    background-position: center;
     color: red;
+    font-size: 15px;
 }
 select:hover {
     background-color: blue;
     color: green;
     font-size: 15px;
+}
+@media   all and (min-width: 600px) and (max-width: 999px){
+    .book{
+        background-image: url("../../images/oldPage.jpg");
+    }
+    .spellBook{
+        grid-template-columns: 1fr;
+        
+    }
+
+}
+@media  all and (max-width: 599px){
+    .book{
+        background-image: none;
+        background-color: rgb(248,236,194);
+    }
+    .spellBook{
+        grid-template-columns: 1fr;
+        font-size: 80%
+    }
+
 }
