@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		Y6/ZKOFX6V9/z+aKaLrtTO3pa9s=
+		iYnChqOTUptFbbTZ8cVJREYE0MQ=
 		</data>
 		<key>Resources/MainMenu.nib</key>
 		<data>
@@ -63,7 +63,7 @@
 		</data>
 		<key>Resources/crashpad_handler</key>
 		<data>
-		JwZ5SRyBWCst4VmvjxERe7QCf+A=
+		PYuOXFZ65ra/K1o/zulndyspVts=
 		</data>
 		<key>Resources/cs.lproj/locale.pak</key>
 		<dict>
@@ -531,22 +531,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IEbvB8quVLhr+UqznAvQcy4myVc=
+			3HPQm9mOchbQ+k75LNIgVI4hOxQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			L91m1PONAC92pYnfKtc2t8L/dzoVcE+CrdCqv23BV84=
+			IWQhnCcKZMehQs20AffiyIeW7l3Z1oXZa/rqbjqbwTI=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Y6/ZKOFX6V9/z+aKaLrtTO3pa9s=
+			iYnChqOTUptFbbTZ8cVJREYE0MQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			wqghjJOAr38EnCuMhpXEvwnxrZbbhBWl3Y8nIV0GH6A=
+			B/1FucWZAs8cbdBULTpkB55Zjyv6FmS2gc7JGuPJ+YU=
 			</data>
 		</dict>
 		<key>Resources/MainMenu.nib</key>
@@ -640,11 +640,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JwZ5SRyBWCst4VmvjxERe7QCf+A=
+			PYuOXFZ65ra/K1o/zulndyspVts=
 			</data>
 			<key>hash2</key>
 			<data>
-			l1lHcZXw6QexhaZiv/sMQZHa4v2OhaRqDQ23EoNZrRQ=
+			QjJQ3PNq6Mtyw+hu16IokbIvF3Wnwougfo4TvAGzHmk=
 			</data>
 		</dict>
 		<key>Resources/cs.lproj/locale.pak</key>

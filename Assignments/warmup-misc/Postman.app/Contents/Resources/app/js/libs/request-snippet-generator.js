@@ -15504,7 +15504,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/usr/local/var/buildkite-agent/builds/postman-ci-agent-mac-1-2/postman/electron-package-and-deploy/node_modules/browserify-sign"
+      "/usr/local/var/buildkite-agent/builds/postman-ci-agent-mac-2-1/postman/electron-package-and-deploy/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -15539,7 +15539,7 @@ module.exports={
   "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/usr/local/var/buildkite-agent/builds/postman-ci-agent-mac-1-2/postman/electron-package-and-deploy/node_modules/browserify-sign",
+  "_where": "/usr/local/var/buildkite-agent/builds/postman-ci-agent-mac-2-1/postman/electron-package-and-deploy/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -17769,7 +17769,7 @@ var compile = function(schema, cache, root, reporter, opts) {
     return v
   }
 
-  var visit = function(name, node, reporter, filter) {
+  var visit = function(name, node, reporter, filter, schemaPath) {
     var properties = node.properties
     var type = node.type
     var tuple = false
@@ -17789,7 +17789,14 @@ var compile = function(schema, cache, root, reporter, opts) {
       if (reporter === true) {
         validate('if (validate.errors === null) validate.errors = []')
         if (verbose) {
-          validate('validate.errors.push({field:%s,message:%s,value:%s,type:%s})', formatName(prop || name), JSON.stringify(msg), value || name, JSON.stringify(type))
+          validate(
+            'validate.errors.push({field:%s,message:%s,value:%s,type:%s,schemaPath:%s})',
+            formatName(prop || name),
+            JSON.stringify(msg),
+            value || name,
+            JSON.stringify(type),
+            JSON.stringify(schemaPath)
+          )
         } else {
           validate('validate.errors.push({field:%s,message:%s})', formatName(prop || name), JSON.stringify(msg))
         }
@@ -17831,7 +17838,7 @@ var compile = function(schema, cache, root, reporter, opts) {
       } else if (node.additionalItems) {
         var i = genloop()
         validate('for (var %s = %d; %s < %s.length; %s++) {', i, node.items.length, i, name, i)
-        visit(name+'['+i+']', node.additionalItems, reporter, filter)
+        visit(name+'['+i+']', node.additionalItems, reporter, filter, schemaPath.concat('additionalItems'))
         validate('}')
       }
     }
@@ -17910,7 +17917,7 @@ var compile = function(schema, cache, root, reporter, opts) {
         }
         if (typeof deps === 'object') {
           validate('if (%s !== undefined) {', genobj(name, key))
-          visit(name, deps, reporter, filter)
+          visit(name, deps, reporter, filter, schemaPath.concat(['dependencies', key]))
           validate('}')
         }
       })
@@ -17944,7 +17951,7 @@ var compile = function(schema, cache, root, reporter, opts) {
         if (filter) validate('delete %s', name+'['+keys+'['+i+']]')
         error('has additional properties', null, JSON.stringify(name+'.') + ' + ' + keys + '['+i+']')
       } else {
-        visit(name+'['+keys+'['+i+']]', node.additionalProperties, reporter, filter)
+        visit(name+'['+keys+'['+i+']]', node.additionalProperties, reporter, filter, schemaPath.concat(['additionalProperties']))
       }
 
       validate
@@ -17975,7 +17982,7 @@ var compile = function(schema, cache, root, reporter, opts) {
     if (node.not) {
       var prev = gensym('prev')
       validate('var %s = errors', prev)
-      visit(name, node.not, false, filter)
+      visit(name, node.not, false, filter, schemaPath.concat('not'))
       validate('if (%s === errors) {', prev)
       error('negative schema matches')
       validate('} else {')
@@ -17988,7 +17995,7 @@ var compile = function(schema, cache, root, reporter, opts) {
 
       var i = genloop()
       validate('for (var %s = 0; %s < %s.length; %s++) {', i, i, name, i)
-      visit(name+'['+i+']', node.items, reporter, filter)
+      visit(name+'['+i+']', node.items, reporter, filter, schemaPath.concat('items'))
       validate('}')
 
       if (type !== 'array') validate('}')
@@ -18005,7 +18012,7 @@ var compile = function(schema, cache, root, reporter, opts) {
       Object.keys(node.patternProperties).forEach(function(key) {
         var p = patterns(key)
         validate('if (%s.test(%s)) {', p, keys+'['+i+']')
-        visit(name+'['+keys+'['+i+']]', node.patternProperties[key], reporter, filter)
+        visit(name+'['+keys+'['+i+']]', node.patternProperties[key], reporter, filter, schemaPath.concat(['patternProperties', key]))
         validate('}')
       })
 
@@ -18023,8 +18030,8 @@ var compile = function(schema, cache, root, reporter, opts) {
     }
 
     if (node.allOf) {
-      node.allOf.forEach(function(sch) {
-        visit(name, sch, reporter, filter)
+      node.allOf.forEach(function(sch, key) {
+        visit(name, sch, reporter, filter, schemaPath.concat(['allOf', key]))
       })
     }
 
@@ -18038,7 +18045,7 @@ var compile = function(schema, cache, root, reporter, opts) {
           validate('if (errors !== %s) {', prev)
             ('errors = %s', prev)
         }
-        visit(name, sch, false, false)
+        visit(name, sch, false, false, schemaPath)
       })
       node.anyOf.forEach(function(sch, i) {
         if (i) validate('}')
@@ -18057,7 +18064,7 @@ var compile = function(schema, cache, root, reporter, opts) {
         ('var %s = 0', passes)
 
       node.oneOf.forEach(function(sch, i) {
-        visit(name, sch, false, false)
+        visit(name, sch, false, false, schemaPath)
         validate('if (%s === errors) {', prev)
           ('%s++', passes)
         ('} else {')
@@ -18165,7 +18172,13 @@ var compile = function(schema, cache, root, reporter, opts) {
       Object.keys(properties).forEach(function(p) {
         if (Array.isArray(type) && type.indexOf('null') !== -1) validate('if (%s !== null) {', name)
 
-        visit(genobj(name, p), properties[p], reporter, filter)
+        visit(
+          genobj(name, p),
+          properties[p],
+          reporter,
+          filter,
+          schemaPath.concat(tuple ? p : ['properties', p])
+        )
 
         if (Array.isArray(type) && type.indexOf('null') !== -1) validate('}')
       })
@@ -18181,7 +18194,7 @@ var compile = function(schema, cache, root, reporter, opts) {
       ('validate.errors = null')
       ('var errors = 0')
 
-  visit('data', schema, reporter, opts && opts.filter)
+  visit('data', schema, reporter, opts && opts.filter, [])
 
   validate
       ('return errors === 0')
@@ -20639,7 +20652,7 @@ module.exports = function xor(a, b) {
 'use strict'
 
 function oldBrowser () {
-  throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11')
+  throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11')
 }
 
 var Buffer = require('safe-buffer').Buffer
@@ -21211,7 +21224,7 @@ Hash.prototype.digest = function (enc) {
 
   // uint64
   } else {
-    var lowBits = bits & 0xffffffff
+    var lowBits = (bits & 0xffffffff) >>> 0
     var highBits = (bits - lowBits) / 0x100000000
 
     this._block.writeUInt32BE(highBits, this._blockSize - 8)
@@ -24601,6 +24614,7 @@ function simpleEnd(buf) {
 },{"safe-buffer":143}],168:[function(require,module,exports){
 (function (global){
 var ClientRequest = require('./lib/request')
+var IncomingMessage = require('./lib/response')
 var extend = require('xtend')
 var statusCodes = require('builtin-status-codes')
 var url = require('url')
@@ -24646,6 +24660,9 @@ http.get = function get (opts, cb) {
 	return req
 }
 
+http.ClientRequest = ClientRequest
+http.IncomingMessage = IncomingMessage
+
 http.Agent = function () {}
 http.Agent.defaultMaxSockets = 4
 
@@ -24680,9 +24697,13 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":170,"builtin-status-codes":53,"url":48,"xtend":190}],169:[function(require,module,exports){
+},{"./lib/request":170,"./lib/response":171,"builtin-status-codes":53,"url":48,"xtend":190}],169:[function(require,module,exports){
 (function (global){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
+
+exports.writableStream = isFunction(global.WritableStream)
+
+exports.abortController = isFunction(global.AbortController)
 
 exports.blobConstructor = false
 try {
@@ -24795,9 +24816,8 @@ var ClientRequest = module.exports = function (opts) {
 
 	var preferBinary
 	var useFetch = true
-	if (opts.mode === 'disable-fetch' || 'timeout' in opts) {
-		// If the use of XHR should be preferred and includes preserving the 'content-type' header.
-		// Force XHR to be used since the Fetch API does not yet support timeouts.
+	if (opts.mode === 'disable-fetch' || ('requestTimeout' in opts && !capability.abortController)) {
+		// If the use of XHR should be preferred. Not typically needed.
 		useFetch = false
 		preferBinary = true
 	} else if (opts.mode === 'prefer-streaming') {
@@ -24859,7 +24879,9 @@ ClientRequest.prototype._onFinish = function () {
 	var headersObj = self._headers
 	var body = null
 	if (opts.method !== 'GET' && opts.method !== 'HEAD') {
-		if (capability.blobConstructor) {
+		if (capability.arraybuffer) {
+			body = toArrayBuffer(Buffer.concat(self._body))
+		} else if (capability.blobConstructor) {
 			body = new global.Blob(self._body.map(function (buffer) {
 				return toArrayBuffer(buffer)
 			}), {
@@ -24886,12 +24908,28 @@ ClientRequest.prototype._onFinish = function () {
 	})
 
 	if (self._mode === 'fetch') {
+		var signal = null
+		if (capability.abortController) {
+			var controller = new AbortController()
+			signal = controller.signal
+			self._fetchAbortController = controller
+
+			if ('requestTimeout' in opts && opts.requestTimeout !== 0) {
+				global.setTimeout(function () {
+					self.emit('requestTimeout')
+					if (self._fetchAbortController)
+						self._fetchAbortController.abort()
+				}, opts.requestTimeout)
+			}
+		}
+
 		global.fetch(self._opts.url, {
 			method: self._opts.method,
 			headers: headersList,
 			body: body || undefined,
 			mode: 'cors',
-			credentials: opts.withCredentials ? 'include' : 'same-origin'
+			credentials: opts.withCredentials ? 'include' : 'same-origin',
+			signal: signal
 		}).then(function (response) {
 			self._fetchResponse = response
 			self._connect()
@@ -24919,10 +24957,10 @@ ClientRequest.prototype._onFinish = function () {
 		if (self._mode === 'text' && 'overrideMimeType' in xhr)
 			xhr.overrideMimeType('text/plain; charset=x-user-defined')
 
-		if ('timeout' in opts) {
-			xhr.timeout = opts.timeout
+		if ('requestTimeout' in opts) {
+			xhr.timeout = opts.requestTimeout
 			xhr.ontimeout = function () {
-				self.emit('timeout')
+				self.emit('requestTimeout')
 			}
 		}
 
@@ -25018,8 +25056,8 @@ ClientRequest.prototype.abort = ClientRequest.prototype.destroy = function () {
 		self._response._destroyed = true
 	if (self._xhr)
 		self._xhr.abort()
-	// Currently, there isn't a way to truly abort a fetch.
-	// If you like bikeshedding, see https://github.com/whatwg/fetch/issues/27
+	else if (self._fetchAbortController)
+		self._fetchAbortController.abort()
 }
 
 ClientRequest.prototype.end = function (data, encoding, cb) {
@@ -25102,13 +25140,40 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode) {
 		self.statusCode = response.status
 		self.statusMessage = response.statusText
 		
-		response.headers.forEach(function(header, key){
+		response.headers.forEach(function (header, key){
 			self.headers[key.toLowerCase()] = header
 			self.rawHeaders.push(key, header)
 		})
 
+		if (capability.writableStream) {
+			var writable = new WritableStream({
+				write: function (chunk) {
+					return new Promise(function (resolve, reject) {
+						if (self._destroyed) {
+							return
+						} else if(self.push(new Buffer(chunk))) {
+							resolve()
+						} else {
+							self._resumeFetch = resolve
+						}
+					})
+				},
+				close: function () {
+					if (!self._destroyed)
+						self.push(null)
+				},
+				abort: function (err) {
+					if (!self._destroyed)
+						self.emit('error', err)
+				}
+			})
 
-		// TODO: this doesn't respect backpressure. Once WritableStream is available, this can be fixed
+			try {
+				response.body.pipeTo(writable)
+				return
+			} catch (e) {} // pipeTo method isn't defined. Can't find a better way to feature test this
+		}
+		// fallback for when writableStream or pipeTo aren't available
 		var reader = response.body.getReader()
 		function read () {
 			reader.read().then(function (result) {
@@ -25121,11 +25186,11 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode) {
 				self.push(new Buffer(result.value))
 				read()
 			}).catch(function(err) {
-				self.emit('error', err)
+				if (!self._destroyed)
+					self.emit('error', err)
 			})
 		}
 		read()
-
 	} else {
 		self._xhr = xhr
 		self._pos = 0
@@ -25169,7 +25234,15 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode) {
 
 inherits(IncomingMessage, stream.Readable)
 
-IncomingMessage.prototype._read = function () {}
+IncomingMessage.prototype._read = function () {
+	var self = this
+
+	var resolve = self._resumeFetch
+	if (resolve) {
+		self._resumeFetch = null
+		resolve()
+	}
+}
 
 IncomingMessage.prototype._onXHRProgress = function () {
 	var self = this

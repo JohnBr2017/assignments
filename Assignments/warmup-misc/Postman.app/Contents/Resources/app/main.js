@@ -479,14 +479,17 @@ function getFeedUrl (arg) {
       platform = arg.data.platform,
       releaseServerURL = arg.data.updateServerDomain,
       feedUrl = '',
-      releaseServerChannel = _.includes(['prod', 'stage'], channel) ? 'stable' : channel;
+      releaseServerChannel = _.includes(['prod', 'stage'], channel) ? 'stable' : channel,
+      additionalParamsString = arg.data.additionalParamsString;
 
   // squirrel-mac specific endpoints
   if (platform === 'OSX') {
     feedUrl = releaseServerURL + 'update/status?' +
       'currentVersion=' + arg.data.version +
       '&platform=' + platform.toLowerCase() +
-      '&channel=' + releaseServerChannel;
+      '&channel=' + releaseServerChannel +
+      '&' + additionalParamsString;
+
     console.log('osx other channel release server url', feedUrl);
     return feedUrl;
   }
@@ -499,6 +502,7 @@ function getFeedUrl (arg) {
     arg.data.version +
     '/' +
     releaseServerChannel;
+
   console.log('Windows release server url', feedUrl);
   return feedUrl;
 }
