@@ -38,7 +38,7 @@ class SpellBook extends Component {
         return (
             <div className="book">
                 <div className="spellOptions">
-                    
+
                     <select className="classSelection" onChange={this.filterClass}>
                         <option value="all">Class</option>
                         <option value="Bard">Bard</option>

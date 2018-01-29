@@ -1,61 +1,24 @@
 .spells {
+    top: auto;
     font-family: fantasy;
     text-shadow: 1px 1px maroon;
+    background-position: center;
     color: black;
     padding: 50px;
     display: grid;
-    overflow: scroll;
-    height: 500px;
-    /* border: 1px solid rebeccapurple; */
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 60px) auto;
+    grid-template-rows: repeat(8, 60px), auto;
     grid-template-areas: 
-    "nam nam nam nam nam"
+    "nam nam nam nam nam" 
     "sch . lev . pag" 
     "cas cas cas rit rit" 
     "dur dur dur con con" 
     "ran ran . com com" 
     "mat mat mat mat mat" 
     "des des des des des" 
-    "hig hig hig hig hig"
-}
-.spells:hover:nth-child(3n+0) {
-    border-radius: 50px;
-    transition-duration: 2s;
-    border: 4px groove green;
-    border-style: outset;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
-    background-size: cover;
-    background-color: green;
-    background-blend-mode: luminosity;
-    color: red;
-    text-shadow: .5px .5px purple, 1.5px 1.5px black
-}
-
-.spells:hover:nth-child(3n+1) {
-    border-radius: 50px;
-    transition-duration: 2s;
-    border: 4px groove blue;
-    border-style: outset;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
-    background-color: blue;
-    background-size: cover;
-    background-blend-mode: luminosity;
-    color: orange;
-    text-shadow: .5px .5px yellow, 1.5px 1.5px black
-}
-
-.spells:hover:nth-child(3n+2) {
-    border-radius: 50px;
-    transition-duration: 2s;
-    border: 4px groove red;
-    border-style: outset;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
-    background-color: purple;
-    background-size: cover;
-    background-blend-mode: luminosity;
-    color: green;
-    text-shadow: .5px .5px greenyellow, 1.5px 1.5px black
+    "hig hig hig hig hig";
+    overflow: hidden;
+    height: 80px;
 }
 
 .name {
@@ -111,9 +74,57 @@
     text-indent: 25px;
 }
 
+
 .higher_level {
     grid-area: hig;
     text-indent: 25px;
 }
 
 
+.spells:hover:nth-child(3n+0) {
+    border-radius: 50px;
+    transition-duration: 2.5s;
+    border: 4px groove green;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-size: cover;
+    background-color: green;
+    background-blend-mode: luminosity;
+    color: red;
+    text-shadow: .5px .5px purple, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
+
+.spells:hover:nth-child(3n+1) {
+    border-radius: 50px;
+    transition-duration: 2.5s;
+    border: 4px groove blue;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-color: blue;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    color: orange;
+    text-shadow: .5px .5px yellow, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
+
+.spells:hover:nth-child(3n+2) {
+    border-radius: 50px;
+    transition-duration: 2.5s;
+    border: 4px groove red;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-color: purple;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    color: green;
+    text-shadow: .5px .5px greenyellow, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
