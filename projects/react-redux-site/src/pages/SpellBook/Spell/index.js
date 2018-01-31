@@ -36,7 +36,6 @@ class Spell extends Component {
             .then((response) => {
                 let results = response.data;
                 this.setState({
-                    isHidden: true,
                     desc: results.desc || "",
                     higher_level: results.higher_level || [],
                     page: results.page,
@@ -77,26 +76,26 @@ class Spell extends Component {
             )
         ) {
             return (
-                    <div className="spells" >
-                        <h1 className="name" >{name}</h1>
-                        <p className="page" >Pg: {page}</p>
-                        <p className="range" >Range: {range}</p>
-                        <p className="components" >Components: {components}</p>
-                        <p className="materials" >Materials: {material.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
-                        {/* <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
-                        <p className="rituals" >Rituals: {ritual}</p>
-                        <p className="duration" >Duration: {duration}</p>
-                        <p className="concentration" >Concentration: {concentration}</p>
-                        <p className="castingTime" >Casting Time: {casting_time}</p>
-                        <p className="level" >Level: {level}</p>
-                        <p className="school" >{school}</p>
-                        {/* currently causing problems conflics with hieght size of .spells css */}
-                        <div className="description">{desc.map((x) => <p >{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
-                        {/* <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div> */}
-                        {/* <p className="description" >{desc.join("\n").replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p> */}
-                        <p className="higher_level" >HL: {higher_level.join("\n").replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
-                        {/* <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
-                    </div>
+                <div className="spells" >
+                    <h1 className="name" >{name}</h1>
+                    <p className="school" >{school}</p>
+                    <p className="level" >Level: {level}</p>
+                    <p className="page" >Pg: {page}</p>
+                    <p className="range" >Range: {range}</p>
+                    <p className="components" >Components: {components}</p>
+                    <p className="materials" >Materials: {material.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
+                    {/* <p className="materials" >Materials: {material.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
+                    <p className="rituals" >Rituals: {ritual}</p>
+                    <p className="duration" >Duration: {duration}</p>
+                    <p className="concentration" >Concentration: {concentration}</p>
+                    <p className="castingTime" >Casting Time: {casting_time}</p>
+                    {/* currently causing problems conflics with hieght size of .spells css */}
+                    <div className="description">{desc.map((x) => <p >{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
+                    {/* <div className="description">{desc.map(x => <p>{x.replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p>)}</div> */}
+                    {/* <p className="description" >{desc.join("\n").replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p> */}
+                    <p className="higher_level" >HL: {higher_level.join("\n").replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
+                    {/* <p className="higher_level" >HL: {higher_level.join("\n").replace(/[^\w\d\s\.\-\"\,\?\:\;]/g, "")}</p> */}
+                </div>
 
             )
         } else {
