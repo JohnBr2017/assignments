@@ -53,10 +53,6 @@ ismsRouter.route("/:id")
                 res.send(updatedIsm)
             }
         })
-        // Inventory.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedItem)=>{
-        //     if(err) return res.status(500).send(err);
-        //     return res.send(updatedItem)
-        // })
     })
 
 

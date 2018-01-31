@@ -10,7 +10,7 @@ export function getFilteredSpell(filter){
         filter
     }
 }
-const filter = (state = "All", action) => {
+const filter = (state = "all", action) => {
     switch (action.type) {
         case "FILTERED_SPELLS":
            return action.filter
