@@ -10,6 +10,11 @@ const spellReSchema = new Schema({
         type: String,
         required: true
     },
+    author: {
+        type: String,
+        default: "Anonymous",
+        required: true
+    },
     desc: {
         type: String,
         required: true
@@ -18,9 +23,18 @@ const spellReSchema = new Schema({
         type: String,
         required: true
     },
-    upVotes: Number,
-    downVotes: Number,
-    totalVoters: Number
+    upVotes: {
+        type: Number,
+        default: 0
+    },
+    downVotes: {
+        type: Number,
+        default: 0
+    },
+    totalVoters: {
+        type: Number,
+        default: 0
+    },
 })
 
 module.exports = mongoose.model("Spell", spellReSchema)

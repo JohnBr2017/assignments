@@ -14,8 +14,6 @@ export function getSpellList() {
             });
     }
 }
-
-
 const spells = (state = [], action) => {
     switch (action.type) {
         case "GET_SPELL_LIST":

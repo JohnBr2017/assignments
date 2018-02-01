@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getSpellList } from "../../redux/spells.js";
-import { getFilteredSpell } from "../../redux/filter";
 import Spell from "./Spell";
 import "./spellbook.css";
 
@@ -90,11 +89,10 @@ class SpellBook extends Component {
 const mapStateToProps = (state) => {
     return {
         spellList: state.spells,
-        filter: state.filter
     }
 }
 
-export default connect(mapStateToProps, { getSpellList, getFilteredSpell })(SpellBook);
+export default connect(mapStateToProps, { getSpellList })(SpellBook);
 
 
 
