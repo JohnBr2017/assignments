@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class SingleReview extends Component {
     render() {
-        let { name, school, desc, review, upVotes, downVotes, totalVoters, author } = this.props
+        let { spellName, school, desc, review, upVotes, downVotes, totalVoters, author } = this.props
         return (
             <div>
                 <div>
-                    <h1>{name}</h1>
+                    <h1>{spellName}</h1>
                     <h2>{author}</h2>
                     <h2>{school}</h2>
                     <p>{desc}</p>

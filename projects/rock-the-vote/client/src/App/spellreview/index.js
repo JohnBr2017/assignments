@@ -20,8 +20,8 @@ class SpellReview extends Component {
                 :
                 <div>
                     {data.map((singleReview, i)=>{
-                        let { name, school, desc, review, upVotes, downVotes, totalVoters, author }=singleReview;
-                        return <SingleReview key={i} name={name} author={author} school={school} desc={desc} review={review} upVotes={upVotes} downVotes={downVotes} totalVoters={totalVoters} ></SingleReview>
+                        let { spellName, school, desc, review, upVotes, downVotes, totalVoters, author }=singleReview;
+                        return <SingleReview key={i} spellName={spellName} author={author} school={school} desc={desc} review={review} upVotes={upVotes} downVotes={downVotes} totalVoters={totalVoters} ></SingleReview>
                     })}
                 </div>
         )

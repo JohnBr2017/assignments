@@ -1,58 +1,67 @@
 import React, { Component } from 'react'
-import axios from "axios"
 
 
 class Form extends Component {
     constructor(props) {
         super(props);
-        this.state ={
-            data: {
-                name: "",
+        this.state = {
+            inputs: {
+                spellName: "",
                 author: "",
                 school: "",
                 desc: "",
                 review: ""
             }
         }
+        this.handleChange =this.handleChange.bind(this)
+        this.handleSubmit =this.handleSubmit.bind(this)
     };
-    handleSubmit(e){
-        
-        axios.post('"http://localhost:8080/spellreview/"', {
-            name: 'Fred',
-            author: 'Fred',
-            school: 'Fred',
-            desc: 'Fred',
-            review: 'Flintstone'
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        // this.serverRequest = axios
-        //     .post("http://localhost:8080/spellreview/", {
-        //         name: this.ref.name,
-        //         author: this.ref.author,
-        //         school: this.ref.school,
-        //         desc: this.ref.desc,
-        //         review: this.ref.review
-        //     })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     }).catch(function (error) {
-        //         console.log(error);
-        //     })
+    handleChange(e){
+        let {name, value } = e.target;
+        this.setState((prevState) =>{
+            return {
+                inputs:{
+                    ...prevState.inputs,
+                    [name]: value
+                }
+            }
+        })
     }
 
+    clearInputs(){
+        this.setState({
+            inputs: {
+                spellName: "",
+                author: "",
+                school: "",
+                desc: "",
+                review: ""
+            }
+        })
+    }
+
+    handleSubmit(e){
+        let {add, id} = this.props;
+        e.preventDefault();
+        this.clearInputs();
+        if (add){
+            this.props.submit(this.state.inputs)
+        }
+        else{
+            this.props.submit(this.state.inputs, id)
+        }
+    }
+    
+
     render() {
+        let {spellName, author, school, desc, review} =this.props
         return (
             <form onSubmit={this.handleSubmit}>
-                <input name="name" type="text" placeholder="name" />
-                <input name="author" type="text" placeholder="author" />
-                <input name="school" type="text" placeholder="school" />
-                <input name="desc" type="text" placeholder="description" />
-                <input name="review" type="text" placeholder="review" />
+                <input onChange={this.handleChange} value={spellName} name="spellName" type="text" placeholder="spell name" />
+                <input onChange={this.handleChange} value={author} name="author" type="text" placeholder="author" />
+                <input onChange={this.handleChange} value={school} name="school" type="text" placeholder="school" />
+                <input onChange={this.handleChange} value={desc} name="desc" type="text" placeholder="description" />
+                <input onChange={this.handleChange} value={review} name="review" type="text" placeholder="review" />
                 <button>Submit</button>
             </form>
         )
@@ -61,19 +70,3 @@ class Form extends Component {
 
 export default (Form)
 
-//     handleSubmit(e) {
-//       e.preventDefault();
-//       var self = this;
-//       fetch('http://reqres.in/api/users', { 
-//           method: 'POST',
-//           data: {
-//             name: self.refs.name,
-//             job: self.refs.job
-//           }
-//         })
-//         .then(function(response) {
-//           return response.json()
-//         }).then(function(body) {
-//           console.log(body);
-//         });
-//     }
