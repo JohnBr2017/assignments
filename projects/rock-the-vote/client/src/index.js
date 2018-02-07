@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/index.js";
 
 store.subscribe(() => {
-    console.log(store.getState())
+    // console.log(store.getState())
 })
 
 ReactDOM.render(

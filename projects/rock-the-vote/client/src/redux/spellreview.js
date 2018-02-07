@@ -1,8 +1,9 @@
 import axios from "axios";
+const reviewUrl = "http://localhost:8080/spellreview/"
 
 export function getSpellReview() {
     return dispatch => {
-        axios.get("http://localhost:8080/spellreview")
+        axios.get(reviewUrl)
             .then(response => {
                 dispatch({
                     type: "GET_SPELL_REVIEW",
@@ -11,13 +12,13 @@ export function getSpellReview() {
             });
     }
 }
-export function addSpellReview(newSpellReview) {
+export function addSpellReview(newSpell) {
     return function (dispatch) {
-        axios.post("http://localhost:8080/spellreview", newSpellReview)
+        axios.post(reviewUrl, newSpell)
             .then(response => {
                 dispatch({
                     type: "ADD_SPELL_REVIEW",
-                    newSpellReview: response.data
+                    newSpell: response.data
                 })
             })
             .catch(err => {
@@ -27,7 +28,7 @@ export function addSpellReview(newSpellReview) {
 }
 export function updateSpellReview(updatedSpellReview) {
     return function (dispatch) {
-        axios.put("http://localhost:8080/spellreview" + "/" + updatedSpellReview._id, updatedSpellReview)
+        axios.put(reviewUrl + updatedSpellReview._id, updatedSpellReview)
             .then(response => {
                 dispatch({
                     type: "UPDATE_SPELL_REVIEW",
@@ -39,6 +40,35 @@ export function updateSpellReview(updatedSpellReview) {
             })
     }
 }
+// export const updateIssue = (updatedIssue, id) => {
+//     return dispatch => {
+//         axios.put(issueUrl + id, updatedIssue)
+//             .then((response) => {
+//                 dispatch({
+//                     type: "UPDATE_ISSUE",
+//                     updatedIssue: response.data,
+//                     id
+//                 })
+//             })
+//     }
+// }
+
+export function deletedSpellReview(id) {
+    return function (dispatch) {
+        axios.delete(reviewUrl + id, id)
+            .then(response => {
+                dispatch({
+                    type: "DELETE_SPELL_REVIEW",
+                    id
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+}
+
+
 const spellreview = (state = { loading: true, data: [] }, action) => {
     switch (action.type) {
         case "GET_SPELL_REVIEW":
@@ -46,18 +76,25 @@ const spellreview = (state = { loading: true, data: [] }, action) => {
         case "ADD_SPELL_REVIEW":
             return {
                 ...state,
-                data: [...state.data, action.newSpellReview]
+                data: [...state.data, action.newSpell]
             };
         case "UPDATE_SPELL_REVIEW":
-            let newData = state.data
-            for (let i = 0; i < newData.length; i++) {
-                if (action.updatedSpellReview._id === newData[i]._id) {
-                    newData[i] = Object.assign(newData[i], action.updatedSpellReview);
+        return {
+            loading: false,
+            data: state.data.map((spell) => {
+                if (spell._id === action.id) {
+                    return action.updatedSpell;
+                } else {
+                    return spell
                 }
-            }
+            })
+        }
+        case "DELETE_SPELL_REVIEW":
             return {
-                ...state,
-                data: newData
+                loading: false,
+                data: state.data.filter((spell) => {
+                    return spell._id !== action.id;
+                })
             }
         default:
             return state;

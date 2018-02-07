@@ -15,18 +15,18 @@ spellRouter.route("/")
     })
     .post((req, res) => {
         let newSpell = new spellModel(req.body)
-        newSpell.save((err, savedSpell) => {
+        newSpell.save((err, newSpell) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send(savedSpell)
+                res.send(newSpell)
             }
 
         })
     })
 spellRouter.route("/:id")
     .get((req, res) => {
-        let { id } = req.params
+        let { id } = req.params 
         spellModel.findOne({ _id: id }, (err, foundSpell) => {
             if (err) {
                 console.error(err);
