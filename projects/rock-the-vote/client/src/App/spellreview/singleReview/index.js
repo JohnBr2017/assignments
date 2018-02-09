@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { getSpellReview, addSpellReview, deletedSpellReview } from "../../../redux/spellreview"
 import { connect } from "react-redux"
+import Comments from "./comments"
+import Votes from "./votes"
 
 
 class SingleReview extends Component {
-    constructor(props) {
-        super(props);
-        this.formSubmit = this.formSubmit.bind(this)
-    }
-    formSubmit(newSpell) {
-        this.props.addSpellReview(newSpell);
-    }
+    // constructor(props) {
+        // super(props);
+        // this.formSubmit = this.formSubmit.bind(this)
+    // }
+    // formSubmit(newSpell) {
+    //     this.props.addSpellReview(newSpell);
+    // }
 
     render() {
         let { id, deleteReview, spellName, school, desc, review, upVotes, downVotes, totalVoters, author } = this.props
@@ -25,6 +27,8 @@ class SingleReview extends Component {
                     <p>{review}</p>
                     <div>Up Votes:{upVotes} Down Votes: {downVotes}</div>
                     <div>Total Voted: {totalVoters}</div>
+                    <Comments currentReview={this.props} id={id}></Comments>
+                    <Votes></Votes>
                 </div>
             </div>
         )

@@ -8,12 +8,11 @@ const spellReSchema = new Schema({
     },
     school: {
         type: String,
-        required: true
+        default: "Unknown"
     },
     author: {
         type: String,
-        default: "Anonymous",
-        required: true
+        default: "Anonymous"
     },
     desc: {
         type: String,
@@ -35,6 +34,7 @@ const spellReSchema = new Schema({
         type: Number,
         default: 0
     },
+    comments: [String]
 })
 
 module.exports = mongoose.model("Spell", spellReSchema)

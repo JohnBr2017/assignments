@@ -21,7 +21,7 @@ class SpellReview extends Component {
     componentDidMount() {
         this.props.getSpellReview();
     }
-    deleteReview(id){
+    deleteReview(id) {
         this.props.deletedSpellReview(id)
     }
 
@@ -33,12 +33,12 @@ class SpellReview extends Component {
                 <div>...loading</div>
                 :
                 <div>
-                <Form add submit={this.formSubmit}></Form>
+                    <Form clear add submit={this.formSubmit}></Form>
                     {data.map((singleReview, i) => {
-                        let { spellName, school, desc, review, upVotes, downVotes, totalVoters, author, _id } = singleReview;
-                        return <SingleReview key={i} spellName={spellName} author={author} school={school} desc={desc} review={review} upVotes={upVotes} downVotes={downVotes} totalVoters={totalVoters} id={_id} deleteReview={this.deleteReview} ></SingleReview>
+                        let { spellName, school, desc, review, upVotes, downVotes, totalVoters, author, _id, comments } = singleReview;
+                        return <SingleReview key={i} comments={comments} spellName={spellName} author={author} school={school} desc={desc} review={review} upVotes={upVotes} downVotes={downVotes} totalVoters={totalVoters} id={_id} deleteReview={this.deleteReview} ></SingleReview>
                     })}
-                    
+
                 </div>
         )
     }

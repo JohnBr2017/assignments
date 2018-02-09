@@ -2,19 +2,22 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { getSpellList } from "../../redux/spells.js";
+import { getSpellList } from "../../../redux/spells";
+import { filterSpellList } from "../../../redux/filter";
 import Spell from "./Spell";
-import "./spellbook.css";
 
 class SpellBook extends Component {
     constructor() {
         super();
-
         this.state = {
             school: "all",
             level: 10,
-            classes: "all"
+            classes: "all",
+            
         };
+        this.filterClass = this.filterClass.bind(this)
+        this.filterLevel = this.filterLevel.bind(this)
+        this.filterSchool = this.filterSchool.bind(this)
     }
     componentDidMount() {
         this.props.getSpellList();
@@ -22,6 +25,7 @@ class SpellBook extends Component {
     filterSchool = (e) => {
         let { value } = e.target;
         this.setState({ school: value });
+        // this.props.filterSpellList(value)
     }
     filterLevel = (e) => {
         let { value } = e.target;
@@ -32,8 +36,10 @@ class SpellBook extends Component {
         let { value } = e.target;
         this.setState({ classes: value });
     }
+
     render() {
         let { spellList } = this.props;
+        // console.log(spellList)
         return (
             <div className="book">
                 <div className="spellOptions">
@@ -73,16 +79,20 @@ class SpellBook extends Component {
                         <option value="Transmutation">Transmutation</option>
                     </select>
                 </div>
-                <div className="spellBook"  >
-                    {spellList.map((spell, i) => {
-                        let { url, name } = spell;
-                        return <Spell key={i} name={name} url={url} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes}></Spell>
-                    })}
+                <div className="spellBook">
+                    {spellList
+                        .map((spell, i) => {
+                            let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, _id } = spell;
+                            return <Spell key={i} name={name} desc={desc} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} concentration={concentration} casting_time={casting_time} level={level} school={school.name} classes={classes} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes} id={_id}
+                            ></Spell>
+                        })}
                 </div>
             </div>
         )
     }
 }
+
+
 
 
 const mapStateToProps = (state) => {
@@ -91,58 +101,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getSpellList })(SpellBook);
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component } from 'react';
-
-// import Spell from "./Spell";
-
-// import axios from "axios";
-// const spUrl = "http://dnd5eapi.co/api/spells";
-
-// class SpellBook extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             spells: [],
-//         }
-//     }
-//     componentDidMount() {
-//         axios.get(spUrl)
-//             .then((response) => {
-//                 let { results } = response.data;
-//                 this.setState({
-//                     spells: results
-//                 })
-//             })
-//             .catch((err) => {
-//                 console.error(err);
-//             })
-//     }
-//     render() {
-//         let { spells } = this.props;
-//         return (
-//             <div>
-//                 {spells.map((spell, i) => {
-//                     let { url, name } = spell;
-//                     return <Spell key={i} name={name} url={url}></Spell>
-//                 })}
-//             </div>
-//         )
-//     }
-// }
-
-
-// export default SpellBook
+export default connect(mapStateToProps, { getSpellList, filterSpellList })(SpellBook);

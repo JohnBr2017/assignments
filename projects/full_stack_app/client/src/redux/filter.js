@@ -4,7 +4,7 @@
 
 
 
-export const filterSpelllist = filter => {
+export const filterSpellList = filter => {
     return dispatch => {
         dispatch({
             type: "FILTER_SPELLS",
@@ -12,12 +12,12 @@ export const filterSpelllist = filter => {
         });
     }
 }
-const filter = (state = "all", action) => {
+const filter = (state =[], action) => {
     switch (action.type) {
         case "FILTER_SPELLS":
             return {
                 ...state,
-                filterBy: action.filterer
+                filter: action.filter
             }
         default:
             return state;

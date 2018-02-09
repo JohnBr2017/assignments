@@ -26,32 +26,22 @@ export function addSpellReview(newSpell) {
             })
     }
 }
-export function updateSpellReview(updatedSpellReview) {
+
+export function updateSpellReview(updatedSpell, id) {
     return function (dispatch) {
-        axios.put(reviewUrl + updatedSpellReview._id, updatedSpellReview)
+        axios.put(reviewUrl  + updatedSpell._id, updatedSpell)
             .then(response => {
                 dispatch({
-                    type: "UPDATE_SPELL_REVIEW",
-                    updatedSpellReview: response.data
-                })
+                    type: "UPDATED_SPELL_REVIEW",
+                    updatedSpell: response.data
+                });
             })
             .catch(err => {
-                console.error(err)
+                console.error(err);
             })
     }
 }
-// export const updateIssue = (updatedIssue, id) => {
-//     return dispatch => {
-//         axios.put(issueUrl + id, updatedIssue)
-//             .then((response) => {
-//                 dispatch({
-//                     type: "UPDATE_ISSUE",
-//                     updatedIssue: response.data,
-//                     id
-//                 })
-//             })
-//     }
-// }
+
 
 export function deletedSpellReview(id) {
     return function (dispatch) {
@@ -70,6 +60,7 @@ export function deletedSpellReview(id) {
 
 
 const spellreview = (state = { loading: true, data: [] }, action) => {
+    let newData = [...state.data];
     switch (action.type) {
         case "GET_SPELL_REVIEW":
             return { loading: false, data: action.payload };
@@ -79,16 +70,16 @@ const spellreview = (state = { loading: true, data: [] }, action) => {
                 data: [...state.data, action.newSpell]
             };
         case "UPDATE_SPELL_REVIEW":
-        return {
-            loading: false,
-            data: state.data.map((spell) => {
-                if (spell._id === action.id) {
-                    return action.updatedSpell;
-                } else {
-                    return spell
+            // let newData=state.data;
+            for (let i = 0; i < newData.length; i++) {
+                if (action.updatedSpell._id === newData[i]._id) {
+                    newData[i] = Object.assign(newData[i], action.updatedSpell)
                 }
-            })
-        }
+            }
+            return {
+                ...state,
+                data: newData
+            }
         case "DELETE_SPELL_REVIEW":
             return {
                 loading: false,
