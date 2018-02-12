@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { getSpellById } from "../../../../redux/spells";
-import { getPlayerList } from "../../../../redux/player"
+import { getPlayerList, addSpell } from "../../../../redux/player"
+import "./spell.css"
 
 
 class Spell extends Component {
@@ -22,44 +23,50 @@ class Spell extends Component {
             level: "",
             school: "",
             classes: ""
-        } 
-        // this.handleChange =  this.handleChange.bind(this)
+        }
+    }
+    handleSpell(spell) {
+        let { playerList } = this.props;
+        console.log(spell)
+        for (let i = 0; i < playerList.length; i++) {
+            if (playerList[i].active === true) {
+                this.props.addSpell(playerList[i], spell)
+            }
+        }
     }
 
-    // handleChange() {
-    //     if()
-    // }
 
     render() {
-        let {acitve}= this.state
-        let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter, spellId, playerList } = this.props;
-        console.log(acitve)
-        console.log(playerList)
+        // let {active}= this.state
+        let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter
+            , spellId
+        } = this.props;
+        // console.log(oneSpell)
         let filtClass = classes.map(c => c.name)
         if ((schoolFilter === school || schoolFilter === "all")
             && (levelFilter === level || levelFilter === 10)
             && (filtClass.includes(classFilter) || classFilter === "all")
         ) {
             return (
-                <div>
-                    <button onClick={this.handleChange} value={spellId}>add spell to player</button>
-                    <h1>{name}</h1>
-                    <h2>{spellId}</h2>
-                    <p>{page}</p>
-                    <p>{range}</p>
-                    <p>{components}</p>
-                    <p>{ritual}</p>
-                    <p>{duration}</p>
-                    <p>{concentration}</p>
-                    <p>{casting_time}</p>
-                    <p>{level}</p>
-                    <p>{school}</p>
-                    <div>{classes.map((x, i) => <p key={i}>{x.name}</p>)}</div>
-                    <p>{material.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
-                    <div>{desc.map((x, i) => <p key={i}>{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
-                    <div>{higher_level.map((x, i) => <p key={i}>{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
+                <div className="spell">
+                    <h1 className="name">{name}
+                    <button className="addButton" onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button>
+                    </h1>
+                    {/* <h2>{spellId}</h2> */}
+                    <p className="page">{page}</p>
+                    <p className="range">{range}</p>
+                    <p className="components">{components}</p>
+                    <p className="ritual">{ritual}</p>
+                    <p className="duration">{duration}</p>
+                    <p className="concentration">{concentration}</p>
+                    <p className="casting_time">{casting_time}</p>
+                    <p className="level">{level}</p>
+                    <p className="school">{school}</p>
+                    {/* <div className="classes">{classes.map((x, i) => <p key={i}>{x.name}</p>)}</div> */}
+                    <p className="material">{material.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>
+                    <div className="desc">{desc.map((x, i) => <p key={i}>{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
+                    <div className="higher_level">{higher_level.map((x, i) => <p key={i}>{x.replace(/â€™/g, "'").replace(/â€œ/g, '"').replace(/â€�/g, '"').replace(/â€”/g, "-").replace(/â€“/g, "-").replace(/â€‹/g, "")}</p>)}</div>
                 </div>
-
             )
         } else {
             return null
@@ -74,4 +81,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getSpellById, getPlayerList })(Spell)
+export default connect(mapStateToProps, { getSpellById, getPlayerList, addSpell })(Spell)

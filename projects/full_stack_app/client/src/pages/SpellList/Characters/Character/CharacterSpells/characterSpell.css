@@ -1,0 +1,80 @@
+.spell{
+    font-family: fantasy;
+    text-shadow: 1px 1px maroon;
+    background-position: center;
+    color: black;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 60px), auto;
+    grid-template-areas: 
+    "nam nam nam nam nam" 
+    "sch . lev . pag" 
+    "cas cas cas rit rit" 
+    "dur dur dur con con" 
+    "ran ran . com com" 
+    "mat mat mat mat mat" 
+    "des des des des des" 
+    "hig hig hig hig hig";
+    overflow: scroll;
+    /* height: 80px; */
+}
+.name {
+    grid-area: nam;
+}
+
+.page {
+    grid-area: pag;
+}
+
+.level {
+    grid-area: lev;
+}
+
+.school {
+    grid-area: sch;
+}
+
+.range {
+    grid-area: ran;
+}
+
+.components {
+    grid-area: com;
+}
+
+.material {
+    grid-area: mat;
+}
+
+.ritual {
+    grid-area: rit;
+}
+
+.duration {
+    grid-area: dur;
+}
+
+.concentration {
+    grid-area: con;
+}
+
+.casting_time {
+    grid-area: cas;
+}
+
+.classes {
+    grid-area: cla;
+}
+
+.desc {
+    grid-area: des;
+    text-indent: 25px;
+}
+
+
+.higher_level {
+    grid-area: hig;
+    text-indent: 25px;
+    visibility: hidden;
+}

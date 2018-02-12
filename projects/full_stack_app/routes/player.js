@@ -10,7 +10,7 @@ playerRouter.route("/")
             } else {
                 res.send(foundPlayer)
             }
-        }).populate("spells")
+        })
     })
     .post((req, res) => {
         let newPlayer = new playerModel(req.body)
@@ -45,7 +45,9 @@ playerRouter.route("/:id")
     })
     .put((req, res) => {
         let { id } = req.params
-        playerModel.findByIdAndUpdate(id, req.body, { new: true }, (err, updatedPlayer) => {
+        console.log(req.body.value)
+        playerModel.findByIdAndUpdate(id, req.body.value, { new: true }, (err, updatedPlayer) => {
+            console.log(updatedPlayer)
             if (err) {
                 console.log(err);
             } else {

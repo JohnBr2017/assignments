@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getSpellList } from "../../../redux/spells";
-import { getPlayerList } from "../../../redux/player"
 import { filterSpellList } from "../../../redux/filter";
 import Spell from "./Spell";
+import "./spellsection.css"
 
 class SpellBook extends Component {
     constructor() {
@@ -22,7 +22,6 @@ class SpellBook extends Component {
     }
     componentDidMount() {
         this.props.getSpellList();
-        // this.props.getPlayerList()
     }
     filterSchool = (e) => {
         let { value } = e.target;
@@ -85,7 +84,7 @@ class SpellBook extends Component {
                     {spellList
                         .map((spell, i) => {
                             let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, _id } = spell;
-                            return <Spell key={i} name={name} desc={desc} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} concentration={concentration} casting_time={casting_time} level={level} school={school.name} classes={classes} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes} spellId={_id}
+                            return <Spell key={i} name={name} desc={desc} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} concentration={concentration} casting_time={casting_time} level={level} school={school.name} classes={classes} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes} spellId={_id} oneSpell={spell}
                             ></Spell>
                         })}
                 </div>
@@ -100,8 +99,7 @@ class SpellBook extends Component {
 const mapStateToProps = (state) => {
     return {
         spellList: state.spells,
-        playerList: state.players
     }
 }
 
-export default connect(mapStateToProps, { getSpellList, filterSpellList, getPlayerList })(SpellBook);
+export default connect(mapStateToProps, { getSpellList, filterSpellList })(SpellBook);
