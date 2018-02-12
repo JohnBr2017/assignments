@@ -10,7 +10,10 @@ const playerSchema = new Schema({
         type: String,
         required: true
     },
-    listOfSpells: [Object]
+    listOfSpells: [{ 
+        type: Schema.Types.ObjectId,
+        ref: "Spells"
+    }]
 })
 
 module.exports = mongoose.model("Player", playerSchema)

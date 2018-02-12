@@ -16,9 +16,7 @@ export function getPlayerList() {
     }
 }
 export function addNewCharacter(newPlayer) {
-    // console.log(newPlayer +"reducer")
     return function (dispatch) {
-        // console.log(newPlayer +"about to call")
         axios.post(playerUrl, newPlayer)
             .then(response => {
                 console.log(response.data)
@@ -32,6 +30,22 @@ export function addNewCharacter(newPlayer) {
             })
     }
 }
+export function addSpell(player, spell) {
+    return function (dispatch) {
+        player.spells.push(spell)
+        axios.put(playerUrl, player)
+            .then(response => {
+                console.log(response.data)
+                dispatch({
+                    type: "ADD_SPELL_TO_PLAYER",
+                    updatedCharacter: response.data
+                })
+            })
+    }
+}
+
+
+
 export function deletedCharacter(id) {
     return function (dispatch) {
         axios.delete(playerUrl + id, id)
@@ -55,11 +69,12 @@ const players = (prevState = [], action) => {
         case "ADD_NEW_CHARACTER":
             return [...prevState, action.newCharacter];
         case "DELETE_THE_CHARACTER":
-            return prevState.filter((character)=>{
-                console.log(character)
+            return prevState.filter((character) => {
+                // console.log(character)
                 return character._id !== action.id;
             })
-            
+        case "ADD_SPELL_TO_PLAYER":
+            return prevState;
         default:
             return prevState;
     }

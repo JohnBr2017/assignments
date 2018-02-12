@@ -22,7 +22,8 @@ const SpellSchema = new Schema({
     },
     classes: [{
         name: String
-    }]
+    }],
+    _id: String
 
 });
 

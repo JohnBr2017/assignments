@@ -9,6 +9,7 @@ class Form extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.clearInput = this.clearInput.bind(this)
     }
     handleChange=(e)=>{
         let {name, value} = e.target;
@@ -19,23 +20,22 @@ class Form extends Component {
             }
         })
     }
-    // clearInput(){
-    //     this.setState({
-            
-    //     })
-    // }
+    clearInput(){
+        this.setState({
+            playerName:"",
+            playerClass:""
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         let {add, id} = this.props;
-        // console.log(add)
-        // console.log(id)
         if (add) {
             this.props.submit(this.state)
         } else {
             this.props.submit(this.state, id);
         }
-        // this.clearInput();
+        this.clearInput();
 
     }
     render() {

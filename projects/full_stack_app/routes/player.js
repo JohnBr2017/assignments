@@ -10,7 +10,7 @@ playerRouter.route("/")
             } else {
                 res.send(foundPlayer)
             }
-        })
+        }).populate("spells")
     })
     .post((req, res) => {
         let newPlayer = new playerModel(req.body)

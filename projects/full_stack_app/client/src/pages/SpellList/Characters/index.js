@@ -32,10 +32,10 @@ class Characters extends Component {
         // console.log(playerList)
         return (
                 <div>
-                    <Form submit={this.formSubmit}></Form>
+                    <Form add clear submit={this.formSubmit}></Form>
                     {playerList.map((player, i) => {
                             let { playerName, playerClass, _id } = player;
-                            return <Character key={i} playerName={playerName} playerClass={playerClass} id={_id} deleteCharacter={this.deleteCharacter} ></Character>
+                            return <Character key={i} playerName={playerName} playerClass={playerClass} characterId={_id} deleteCharacter={this.deleteCharacter} ></Character>
                         })
                     }
                 </div>

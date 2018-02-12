@@ -1,0 +1,17 @@
+.spellpage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-areas: "c . s";
+    border: 1px solid black;
+    overflow: scroll;
+}
+
+.characters {
+    grid-area: c;
+    border: 5px dotted red;
+}
+
+.spellbook {
+    grid-area: s;
+    border: 5px dotted blue;
+}

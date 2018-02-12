@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux"
+import { getSpellById } from "../../../../redux/spells";
+import { getPlayerList } from "../../../../redux/player"
+
 
 class Spell extends Component {
     constructor(props) {
@@ -18,12 +22,19 @@ class Spell extends Component {
             level: "",
             school: "",
             classes: ""
-        }
-
+        } 
+        // this.handleChange =  this.handleChange.bind(this)
     }
 
+    // handleChange() {
+    //     if()
+    // }
+
     render() {
-        let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter, id } = this.props;
+        let {acitve}= this.state
+        let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter, spellId, playerList } = this.props;
+        console.log(acitve)
+        console.log(playerList)
         let filtClass = classes.map(c => c.name)
         if ((schoolFilter === school || schoolFilter === "all")
             && (levelFilter === level || levelFilter === 10)
@@ -31,9 +42,9 @@ class Spell extends Component {
         ) {
             return (
                 <div>
-                    {/* spell adder */}
-                    <button value={id} >spell to add to active player</button>
+                    <button onClick={this.handleChange} value={spellId}>add spell to player</button>
                     <h1>{name}</h1>
+                    <h2>{spellId}</h2>
                     <p>{page}</p>
                     <p>{range}</p>
                     <p>{components}</p>
@@ -50,10 +61,17 @@ class Spell extends Component {
                 </div>
 
             )
-        }else {
+        } else {
             return null
         }
     }
 }
 
-export default Spell;
+const mapStateToProps = (state) => {
+    return {
+        singleSpell: state.spell,
+        playerList: state.players
+    }
+}
+
+export default connect(mapStateToProps, { getSpellById, getPlayerList })(Spell)
