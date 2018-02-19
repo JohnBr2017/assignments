@@ -1,10 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
+import { Switch, Route } from "react-router-dom"
 
-//components
+//Navbar
+import Navbar from "./Navbar"
+//Pages
+import Home from "../pages/Home"
+import About from "../pages/About"
+import Projects from "../pages/Projects"
+//css
+import "./app.css"
 
-function App(props){
+function App(props) {
     return (
-        <div>
+        <div className="app">
+            <Navbar className="navbar" />
+            <span className="vus">V</span>
+            <span className="vus">U</span>
+            <span className="vus">S</span>
+            <div className="pages">
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/projects" component={Projects} />
+                    <Route exact path="/about" component={About} />
+                </Switch>
+            </div>
         </div>
     )
 }

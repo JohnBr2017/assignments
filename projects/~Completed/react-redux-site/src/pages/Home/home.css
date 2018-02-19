@@ -1,0 +1,19 @@
+.storeFront{
+    width: 40%;
+    color: orange;
+    text-shadow: 1px 1px black;
+    font-family: fantasy;
+}
+.title{
+    font-size: 45px
+}
+.titleP{
+    font-size: 25px
+
+}
+@media screen and (max-width: 999px){
+    .storeFront{
+        width: 80%;
+        margin: auto
+    }
+}

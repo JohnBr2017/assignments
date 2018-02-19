@@ -1,0 +1,171 @@
+.spells {
+    font-family: fantasy;
+    text-shadow: 1px 1px maroon;
+    background-position: center;
+    color: black;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 60px), auto;
+    grid-template-areas: 
+    "nam nam nam nam nam" 
+    "sch . lev . pag" 
+    "cas cas cas rit rit" 
+    "dur dur dur con con" 
+    "ran ran . com com" 
+    "mat mat mat mat mat" 
+    "des des des des des" 
+    "hig hig hig hig hig";
+    overflow: hidden;
+    height: 80px;
+    
+}
+
+.name {
+    grid-area: nam;
+}
+
+.page {
+    grid-area: pag;
+}
+
+.level {
+    grid-area: lev;
+}
+
+.school {
+    grid-area: sch;
+}
+
+.range {
+    grid-area: ran;
+    visibility: hidden;
+}
+
+.components {
+    grid-area: com;
+    visibility: hidden;
+}
+
+.materials {
+    grid-area: mat;
+    visibility: hidden;
+}
+
+.rituals {
+    grid-area: rit;
+    visibility: hidden;
+}
+
+.duration {
+    grid-area: dur;
+    visibility: hidden;
+}
+
+.concentration {
+    grid-area: con;
+    visibility: hidden;
+}
+
+.castingTime {
+    grid-area: cas;
+    visibility: hidden;
+}
+
+.classes {
+    grid-area: cla;
+    visibility: hidden;
+}
+
+.description {
+    grid-area: des;
+    text-indent: 25px;
+    visibility: hidden;
+}
+
+
+.higher_level {
+    grid-area: hig;
+    text-indent: 25px;
+    visibility: hidden;
+}
+
+
+.spells:hover .range{
+    visibility: visible;
+}
+.spells:hover .components{
+    visibility: visible;
+}
+.spells:hover .materials{
+    visibility: visible;
+}
+.spells:hover .rituals{
+    visibility: visible;
+}
+.spells:hover .duration{
+    visibility: visible;
+}
+.spells:hover .concentration{
+    visibility: visible;
+}
+.spells:hover .castingTime{
+    visibility: visible;
+}
+.spells:hover .classes{
+    visibility: visible;
+}
+.spells:hover .description{
+    visibility: visible;
+}
+.spells:hover .higher_level{
+    visibility: visible;
+}
+.spells:hover:nth-child(3n+0) {
+    border-radius: 40px;
+    transition-duration: 2.5s;
+    border: 4px groove green;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(26, 158, 26);
+    background-blend-mode: color-burn;
+    color: red;
+    text-shadow: .5px .5px purple, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
+
+.spells:hover:nth-child(3n+1) {
+    border-radius: 40px;
+    transition-duration: 2.5s;
+    border: 4px groove blue;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-color: blue;
+    background-size: cover;
+    background-blend-mode: color-burn;
+    color: orange;
+    text-shadow: .5px .5px yellow, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
+
+.spells:hover:nth-child(3n+2) {
+    border-radius: 40px;
+    transition-duration: 2.5s;
+    border: 4px groove red;
+    border-style: outset;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/fireBall.gif");
+    background-position: center;
+    background-color: purple;
+    background-size: cover;
+    background-blend-mode: color-burn;
+    color: green;
+    text-shadow: .5px .5px greenyellow, 1.5px 1.5px black;
+    height: 500px;
+    overflow: scroll;
+}
+
