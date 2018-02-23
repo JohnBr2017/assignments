@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 
-const spellReSchema = new Schema({
+const reviewSchema = new Schema({
     spellName: {
         type: String,
         required: true
@@ -37,4 +37,4 @@ const spellReSchema = new Schema({
     comments: [String]
 })
 
-module.exports = mongoose.model("Spell", spellReSchema)
+module.exports = mongoose.model("Review", reviewSchema) 

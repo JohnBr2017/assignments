@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { getSpellReview, addSpellReview, deletedSpellReview } from "../../redux/spellreview.js";
+import { getReview, addReview, deletedReview } from "../../redux/spellreview.js";
 import SingleReview from "./singleReview"
 import Form from "../shared/Form"
 
@@ -15,19 +15,18 @@ class SpellReview extends Component {
         this.deleteReview = this.deleteReview.bind(this)
     }
     formSubmit(newSpell) {
-        this.props.addSpellReview(newSpell);
+        this.props.addReview(newSpell);
     }
 
     componentDidMount() {
-        this.props.getSpellReview();
+        this.props.getReview();
     }
     deleteReview(id) {
-        this.props.deletedSpellReview(id)
+        this.props.deletedReview(id)
     }
 
     render() {
         let { loading, data } = this.props;
-        console.log(data);
         return (
             loading ?
                 <div>...loading</div>
@@ -48,4 +47,4 @@ const mapStateToProps = (state) => {
     return state.spellReviews
 }
 
-export default connect(mapStateToProps, { getSpellReview, addSpellReview, deletedSpellReview })(SpellReview)
+export default connect(mapStateToProps, { getReview, addReview, deletedReview })(SpellReview)

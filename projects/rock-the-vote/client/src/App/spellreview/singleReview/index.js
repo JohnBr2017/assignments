@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getSpellReview, addSpellReview, deletedSpellReview } from "../../../redux/spellreview"
+import { getReview, addReview, deletedReview } from "../../../redux/spellreview"
 import { connect } from "react-redux"
 import Comments from "./comments"
 import Votes from "./votes"
@@ -16,6 +16,7 @@ class SingleReview extends Component {
 
     render() {
         let { id, deleteReview, spellName, school, desc, review, upVotes, downVotes, totalVoters, author } = this.props
+        
         return (
             <div>
                 <div>
@@ -28,7 +29,7 @@ class SingleReview extends Component {
                     <div>Up Votes:{upVotes} Down Votes: {downVotes}</div>
                     <div>Total Voted: {totalVoters}</div>
                     <Comments currentReview={this.props} id={id}></Comments>
-                    <Votes></Votes>
+                    <Votes currentReview={this.props}  ></Votes>
                 </div>
             </div>
         )
@@ -39,4 +40,4 @@ const mapStateToProps = (state) => {
         spellreview: state.spellreview
     }
 }
-export default connect(mapStateToProps, { getSpellReview, addSpellReview, deletedSpellReview })(SingleReview)
+export default connect(mapStateToProps, { getReview, addReview, deletedReview })(SingleReview)

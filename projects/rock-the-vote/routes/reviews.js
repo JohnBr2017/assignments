@@ -1,60 +1,62 @@
 const express = require("express");
-const spellRouter = express();
-const spellModel = require("../models/spellReviews.js");
+const reviewsRouter = express();
+const reviewModel = require("../models/reviews.js");
 
 
-spellRouter.route("/")
+reviewsRouter.route("/")
     .get((req, res) => {
-        spellModel.find(req.query, (err, foundSpell) => {
+        reviewModel.find(req.query, (err, foundReview) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send(foundSpell)
+                res.send(foundReview)
             }
         })
     })
     .post((req, res) => {
-        let newSpell = new spellModel(req.body)
-        newSpell.save((err, newSpell) => {
+        let newReview = new reviewModel(req.body)
+        newReview.save((err, newReview) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send(newSpell)
+                res.send(newReview)
             }
 
         })
     })
-spellRouter.route("/:id")
+reviewsRouter.route("/:id")
     .get((req, res) => {
         let { id } = req.params 
-        spellModel.findOne({ _id: id }, (err, foundSpell) => {
+        reviewModel.findOne({ _id: id }, (err, foundReview) => {
             if (err) {
                 console.error(err);
             } else {
-                res.send(foundSpell)
+                res.send(foundReview)
             }
         })
     })
     .delete((req, res) => {
         let { id } = req.params
-        spellModel.findByIdAndRemove(id, (err, deletedSpell)=>{
+        reviewModel.findByIdAndRemove(id, (err, deletedReview)=>{
             if (err) {
                 console.error(err);
             } else {
-                res.send(deletedSpell)
+                res.send(deletedReview)
             }
         })
     })
     .put((req, res) => {
         let { id } = req.params
-        spellModel.findByIdAndUpdate(id, req.body, {new:true}, (err, updatedSpell)=>{
+        console.log(req.body)
+        reviewModel.findByIdAndUpdate(id, req.body, {new:true}, (err, updatedReview)=>{
+            console.log(req.body, "after findbyid")
             if (err) {
                 console.error(err);
             } else {
-                res.send(updatedSpell)
+                res.send(updatedReview)
             }
         })
     })
 
 
-module.exports = spellRouter
+module.exports = reviewsRouter

@@ -1,24 +1,24 @@
 import axios from "axios";
-const reviewUrl = "http://localhost:8080/spellreview/"
+const reviewUrl = "http://localhost:8080/review/"
 
-export function getSpellReview() {
+export function getReview() {
     return dispatch => {
         axios.get(reviewUrl)
             .then(response => {
                 dispatch({
-                    type: "GET_SPELL_REVIEW",
+                    type: "GET_REVIEW",
                     payload: response.data
                 });
             });
     }
 }
-export function addSpellReview(newSpell) {
+export function addReview(newReview) {
     return function (dispatch) {
-        axios.post(reviewUrl, newSpell)
+        axios.post(reviewUrl, newReview)
             .then(response => {
                 dispatch({
-                    type: "ADD_SPELL_REVIEW",
-                    newSpell: response.data
+                    type: "ADD_REVIEW",
+                    newReview: response.data
                 })
             })
             .catch(err => {
@@ -27,13 +27,14 @@ export function addSpellReview(newSpell) {
     }
 }
 
-export function updateSpellReview(updatedSpell, id) {
+export function updateReview(updatedReview, id) {
+    console.log(updatedReview)
     return function (dispatch) {
-        axios.put(reviewUrl  + updatedSpell._id, updatedSpell)
+        axios.put(reviewUrl + updatedReview.id, updatedReview)
             .then(response => {
                 dispatch({
-                    type: "UPDATED_SPELL_REVIEW",
-                    updatedSpell: response.data
+                    type: "UPDATED_REVIEW",
+                    updatedReview: response.data
                 });
             })
             .catch(err => {
@@ -43,12 +44,13 @@ export function updateSpellReview(updatedSpell, id) {
 }
 
 
-export function deletedSpellReview(id) {
+
+export function deletedReview(id) {
     return function (dispatch) {
         axios.delete(reviewUrl + id, id)
             .then(response => {
                 dispatch({
-                    type: "DELETE_SPELL_REVIEW",
+                    type: "DELETE_REVIEW",
                     id
                 })
             })
@@ -59,32 +61,42 @@ export function deletedSpellReview(id) {
 }
 
 
-const spellreview = (state = { loading: true, data: [] }, action) => {
+const review = (state = { loading: true, data: [] }, action) => {
     let newData = [...state.data];
     switch (action.type) {
-        case "GET_SPELL_REVIEW":
+        case "GET_REVIEW":
             return { loading: false, data: action.payload };
-        case "ADD_SPELL_REVIEW":
+        case "ADD_REVIEW":
             return {
                 ...state,
-                data: [...state.data, action.newSpell]
+                data: [...state.data, action.newReview]
             };
-        case "UPDATE_SPELL_REVIEW":
-            // let newData=state.data;
+            case "UPDATE_REVIEW":
             for (let i = 0; i < newData.length; i++) {
-                if (action.updatedSpell._id === newData[i]._id) {
-                    newData[i] = Object.assign(newData[i], action.updatedSpell)
+                if (action.updatedReview._id === newData[i]._id) {
+                    newData[i] = Object.assign(newData[i], action.updatedReview)
                 }
             }
             return {
                 ...state,
                 data: newData
             }
-        case "DELETE_SPELL_REVIEW":
+            case "UPDATE_VOTE":
+            for (let i = 0; i < newData.length; i++) {
+                if (action.updatedVote._id === newData[i]._id) {
+                    newData[i] = Object.assign(newData[i], action.updatedVote)
+                }
+            }
+            return {
+                ...state,
+                data: newData
+            }
+
+        case "DELETE_REVIEW":
             return {
                 loading: false,
-                data: state.data.filter((spell) => {
-                    return spell._id !== action.id;
+                data: state.data.filter((review) => {
+                    return review._id !== action.id;
                 })
             }
         default:
@@ -92,4 +104,4 @@ const spellreview = (state = { loading: true, data: [] }, action) => {
     }
 }
 
-export default spellreview;
+export default review;

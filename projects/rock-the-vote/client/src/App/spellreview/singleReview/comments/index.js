@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateSpellReview } from "../../../../redux/spellreview"
+import { updateReview } from "../../../../redux/spellreview"
 
 
 class Comments extends Component {
@@ -26,18 +26,20 @@ class Comments extends Component {
     }
     submitComment(e) {
         e.preventDefault();
-        let { currentReview } = this.props;
+        let { currentReview, id } = this.props;
         let { comment } = this.state;
         currentReview.comments.push(comment);
-        this.props.updateSpellReview(currentReview);
-        console.log(currentReview)
+        this.props.updateReview(currentReview, id);
         this.clearInput();
     }
     render() {
-        let {comment} =this.state
+        let {comments} =this.props.currentReview
+        let {id }= this.props
         return (
             <div>
-                <div>{comment}</div>
+                {comments.map((comment, i)=>{
+                    return <p id={id} key={i}>{comment}</p>
+                })}
                 <form onSubmit={this.submitComment} >
                     <textarea onChange={this.handleChange} type="text" value={this.state.comment} placeholder="test"></textarea>
                     <button>Post</button>
@@ -51,4 +53,4 @@ const mapStateToProps = (state) => {
     return { spellreviews: state.spellreviews }
 }
 
-export default connect(mapStateToProps, { updateSpellReview })(Comments)
+export default connect(mapStateToProps, { updateReview })(Comments)
