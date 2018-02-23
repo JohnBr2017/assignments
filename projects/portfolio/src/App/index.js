@@ -14,9 +14,7 @@ function App(props) {
     return (
         <div className="app">
             <Navbar className="navbar" />
-            <span className="vus">V</span>
-            <span className="vus">U</span>
-            <span className="vus">S</span>
+            <span className="vus">VUS</span>
             <div className="pages">
                 <Switch>
                     <Route exact path="/" component={Home} />

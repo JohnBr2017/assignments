@@ -3,6 +3,7 @@
     height: 100%;
     color: rgb(156, 151, 151);
     text-align: center;
+    margin: auto;
     background: url("../../images/static.gif");
     background-size: cover;
     background-repeat: no-repeat;
