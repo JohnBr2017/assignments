@@ -1,6 +1,0 @@
-.app-wrapper {
-    background-color: azure;
-    display: grid;
-    height: 100vh;
-    grid-template-rows: 20% 70% 10%;
-}
