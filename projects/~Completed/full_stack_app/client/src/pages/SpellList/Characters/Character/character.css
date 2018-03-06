@@ -1,0 +1,29 @@
+.characterSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: 
+    "name class"
+    "check delete"
+    "spells spells"
+}
+.playerName{
+    grid-area: name;
+
+}
+.playerClass{
+    grid-area: class;
+
+}
+.playerSpells{
+    grid-area: spells;
+
+}
+.deleteButton{
+    grid-area: delete;
+    height: 10px;
+    width: 10px
+}
+.activeCheckbox{
+    grid-area: check;
+}

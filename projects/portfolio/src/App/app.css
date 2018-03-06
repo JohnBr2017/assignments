@@ -1,0 +1,29 @@
+.app {
+    height: 95vh;
+    overflow: scroll;
+}
+
+
+.vus {
+    position: absolute;
+    margin: auto;
+    margin-left: 10%;
+    font-size: 75vh;
+    color: rgba(29, 30, 31, 0.3);
+    z-index: 1;
+}
+
+.pages {
+    position: relative;
+    margin-top: 10%;
+    margin-left: 25%;
+    border: black solid 15px;
+    background: url("../images/static.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    width: 65vw;
+    height: 65vh;
+    z-index: 2;
+    overflow: scroll;
+}

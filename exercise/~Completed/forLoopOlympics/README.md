@@ -1,0 +1,2 @@
+Exercise
+    for loop olympics

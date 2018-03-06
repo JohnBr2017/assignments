@@ -1,0 +1,10 @@
+.linkImages{
+    height: 35px;
+}
+.links{
+    font-size: 25px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-around
+}

@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vw;
+    background-size: 100vw;
+    background-image: url(marioTitle.jpg);
+    background-attachment: fixed;
+    position: relative;
+}
+h1 {
+    color: red;
+    font-size: 50px;
+    font-family: cursive;
+    width: 75%;
+    margin: auto;
+}
+#footer {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    color: blue;
+    font-size: 15px;
+    text-decoration: underline;
+    background-color: black;
+}
+.bob, .cheep, .goomba {
+    color: yellow;
+    font-size: 20px;
+    font-family: cursive;
+    position: relative;
+}
+.picture {
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+}
+.coin {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+.escape {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+.pests {
+    width: 70%;
+    margin: auto;
+}
+h2 {
+    color: orange;
+    font-size: 25px;
+}
+#goombaPrice, #cheepPrice, #bobPrice {
+    display: inline-block;
+    position: relative;
+    bottom: 5px;
+    text-shadow: 1px 1px black;    
+}
+#totalGoombaCaught, #totalCheepCheepCaught, #totalBobombCaught {
+    position: relative;
+    display: inline-block;
+    bottom: 5px;
+    left: 10%;
+    text-shadow: 1px 1px black;    
+    
+}
+#goombaCharge, #cheepcheepCharge, #bobombCharge {
+    position: relative;
+    display: inline-block;
+    bottom: 5px;
+    left: 35%;
+    text-shadow: 1px 1px black;
+}
+h3 {
+    color: red;
+    text-shadow: 1px 1px black;
+    font-size: 25px;
+}

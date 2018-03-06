@@ -1,0 +1,10 @@
+body {
+    background-image: url("../images/magicShop.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+@media screen and (max-width: 999px){
+    body{
+        background-image: url("../images/magicShop2.jpg");
+    }
+}

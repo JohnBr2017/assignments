@@ -1,0 +1,90 @@
+{
+    "appetizers": {
+        "onion rings": {
+            "deepfried": true,
+            "howMany": "8",
+            "dipping sause": "Ranch"
+        },
+        "nachos": {
+            "feeds": "3 people",
+            "type of cheese": "Sharp Chedder",
+            "plate size": "large"
+        }
+    },
+    "cold sandwiches": {
+        "turkey club": {
+            "cut": "down the middle",
+            "bread": "white bread",
+            "ingredients": [
+                "turkey",
+                "provolone cheese",
+                "mayo"
+            ]
+        },
+        "ham sandwich": {
+            "cut": "corner to corner",
+            "bread": "wheat bread",
+            "ingredients": [
+                "ham",
+                "chedder cheese",
+                "butter"
+            ]
+        }
+    },
+    "hot sandwiches": {
+        "spicy italian": {
+            "toasted": true,
+            "bread": "white bread",
+            "ingredients": [
+                "pepperonie",
+                "salami",
+                "provolone cheese"
+            ]
+        },
+        "grilled cheese": {
+            "cut": "corner to corner",
+            "bread": "wheat bread",
+            "ingredients": [
+                "bread",
+                "chedder cheese",
+                "butter"
+            ]
+        }
+    },
+    "desserts": {
+        "milkshake": {
+            "number of toppings": "3",
+            "size": "medium",
+            "choice of flavors": [
+                "chocolate",
+                "vanilla",
+                "cookie dough"
+            ]
+        },
+        "cookie": {
+            "nut-free": false,
+            "type": "peanutbutter chocolate chip",
+            "free with meal purchase": true
+        }
+    },
+    "drinks": {
+        "soda": {
+            "type of soda": "pepsi",
+            "size": "medium",
+            "choice of sode": [
+                "Mt. Dew",
+                "Pepsi",
+                "Root-Beer"
+            ]
+        },
+        "alchole": {
+            "age-requirement": true,
+            "kind of drinks": [
+                "margeriata",
+                "Ipa",
+                "bud-light"
+            ],
+            "limit": "3 per meal purchase"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.projectSmall {
+    height: 30%;
+    width: 50%;
+    margin: auto;
+    padding: 5px
+}
+
+.projectBig {
+    height: 100%;
+    width: 100%;
+    padding:5px
+}
+
+.projectBox {
+    height: 60%;
+    width: 100%;
+}
+
+.projects {
+    color: rgb(156, 151, 151);
+    /* width: 75%; */
+}
+
+.projectsText {
+    width: 75%;
+    margin: auto;
+    padding:5px;
+}
+
