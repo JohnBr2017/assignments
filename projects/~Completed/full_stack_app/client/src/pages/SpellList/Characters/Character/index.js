@@ -14,7 +14,7 @@ class Character extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
-    deleteSpell(id){
+    deleteSpell(id) {
         this.props.deletedSpell(id);
     }
     handleChange(player) {
@@ -36,11 +36,12 @@ class Character extends Component {
                 <h3 className="playerClass">{playerClass}</h3>
                 <div className="playerSpells">
                     {listOfSpells.map((spell, i) => {
-                        let {name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, _id}=spell
+                        let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, _id } = spell
                         console.log(listOfSpells)
                         return <CharacterSpells key={i} name={name} desc={desc} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} concentration={concentration} casting_time={casting_time} level={level} school={school.name} classes={classes} spellId={_id} deletedSpell={this.deleteSpell}> right here </CharacterSpells>
                     })
-                    }</div>
+                    }
+                </div>
             </div>
         )
     }

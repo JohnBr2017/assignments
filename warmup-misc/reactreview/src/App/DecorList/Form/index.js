@@ -46,7 +46,7 @@ class Form extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="size">
                     Pick a size:
-                <select onChange={this.handleChange} name="size" id="size" value={size}>
+                    <select onChange={this.handleChange} name="size" id="size" value={size}>
                         <option value="sm">Small</option>
                         <option value="md">Medium</option>
                         <option value="lg">Large</option>

@@ -40,7 +40,6 @@ class SpellBook extends Component {
 
     render() {
         let { spellList } = this.props;
-        
         return (
             <div className="book">
                 <div className="spellOptions">

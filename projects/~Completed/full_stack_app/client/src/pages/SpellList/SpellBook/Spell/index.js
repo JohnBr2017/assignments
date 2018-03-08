@@ -37,11 +37,9 @@ class Spell extends Component {
 
 
     render() {
-        // let {active}= this.state
         let { name, desc, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter
             , spellId
         } = this.props;
-        // console.log(oneSpell)
         let filtClass = classes.map(c => c.name)
         if ((schoolFilter === school || schoolFilter === "all")
             && (levelFilter === level || levelFilter === 10)
@@ -50,7 +48,7 @@ class Spell extends Component {
             return (
                 <div className="spell">
                     <h1 className="name">{name}
-                    <button className="addButton" onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button>
+                        <button className="addButton" onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button>
                     </h1>
                     {/* <h2>{spellId}</h2> */}
                     <p className="page">{page}</p>
