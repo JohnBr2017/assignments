@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import EditForm from "./editForm/index"
 
 class CreatedSpells extends Component {
+
     render() {
-        let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id } = this.props
+        let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id, deleteSpell, editSpell } = this.props
         return (
             <div>
+                <button onClick={() => deleteSpell(_id)} >Delete</button>
+                <EditForm editSpell={editSpell} _id={_id} {...this.props} /> 
                 <h1>{spellName} </h1>
                 <h2>{_id}</h2>
                 <p>Page:{page}</p>
@@ -24,4 +28,6 @@ class CreatedSpells extends Component {
     }
 }
 
-export default CreatedSpells;
+
+
+export default (CreatedSpells);

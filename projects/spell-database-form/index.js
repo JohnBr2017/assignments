@@ -3,13 +3,15 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const config = require("./config")
+const cors = require("cors");
 
 const app = express();
-mongoose.connect("mongodb://localhost:27017",()=>{
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017",()=>{
     console.log("Connected to MongoDB")
 })
 // middleware
 app.use(bodyParser.json());
+app.use(cors());
 //routes
 const spellsRoute = require("./routes/spells")
 

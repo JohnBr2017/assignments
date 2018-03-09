@@ -14,7 +14,8 @@ const SpellSchema = new Schema({
     casting_time: String,
     level: String,
     school: String,
-    classes: [String]
+    classes: [String],
+
 });
 
 module.exports = mongoose.model("Spells", SpellSchema)

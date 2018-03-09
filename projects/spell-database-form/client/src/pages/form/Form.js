@@ -19,6 +19,7 @@ class Form extends Component {
             level: props.level || "Cantrip",
             school: props.school || "Abjuration",
             classes: props.classes || [""],
+            
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleChecked = this.handleChecked.bind(this)
@@ -28,7 +29,7 @@ class Form extends Component {
     }
     handleChange = (e) => {
         let { name, value } = e.target;
-        this.setState((prevState) => {
+        this.setState(prevState => {
             return {
                 ...prevState.state,
                 [name]: value
@@ -37,10 +38,10 @@ class Form extends Component {
     }
     handleChecked = (e) => {
         let { name, value, checked } = e.target;
-        if (checked === true) {
-            classesArray.push(value)
-        } else if (checked === !true) {
+        if (checked === !true) {
             classesArray.splice(value, 1)
+        } else if (checked === true) {
+            classesArray.push(value)
         }
         this.setState((prevState) => {
             return {
@@ -78,13 +79,13 @@ class Form extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        let { add, id } = this.props;
+        let { add, _id, edit } = this.props;
         if (add) {
             this.props.submit(this.state)
-        } else {
-            this.props.submit(this.state, id);
+            this.clearInput();
+        } else if(edit) {
+            this.props.submit(this.state, _id);
         }
-        this.clearInput();
     }
     render() {
         let { spellName, higher_level, page, range, components, material, duration, casting_time, level, school, description } = this.state;
@@ -93,10 +94,10 @@ class Form extends Component {
                 <div> Spell Name<br />
                     <input onChange={this.handleChange} value={spellName} name="spellName" />
                 </div>
-                <div> Description<br />
+                <div> Description ***Best used when copy paste straight into box, then typing***<br />
                     <textarea onChange={this.handleArrayChange} value={description} name="description" rows="10" cols="50" />
                 </div>
-                <div> Higher Level<br />
+                <div> Higher Level ***Best used when copy paste straight into box, then typing***<br />
                     <textarea onChange={this.handleArrayChange} value={higher_level} name="higher_level" rows="10" cols="50" />
                 </div>
                 <div> Page<br />
@@ -108,7 +109,7 @@ class Form extends Component {
                 <div> Components<br />
                     <input onChange={this.handleChange} value={components} name="components" />
                 </div>
-                <div> Materials<br />
+                <div> Materials ***Best used when copy paste straight into box, then typing***<br />
                     <textarea onChange={this.handleArrayChange} value={material} name="material" rows="10" cols="50" />
                 </div>
                 <div> Ritual<br />
