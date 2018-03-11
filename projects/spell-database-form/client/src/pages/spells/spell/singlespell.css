@@ -1,0 +1,90 @@
+.spellListOnFormSpellBox {
+    border: silver solid 5px;
+    border-radius: 25px;
+    width: 920px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "slofName slofName slofDele slofHiSh"
+    "slofPage slofRang slofRitu slofSpId"
+    "slofDura slofCast slofLeve slofScho"
+    "slofComp slofComp  . ."
+    "slofMate slofMate slofMate slofMate"
+    "slofDesc slofDesc slofDesc slofDesc"
+    "slofHigh slofHigh slofHigh slofHigh"
+    "slofClas slofClas slofClas slofClas"
+    "slofEdit slofEdit slofEdit slofEdit"
+}
+
+.spellListOnFormDelete {
+    grid-area: slofDele;
+    border-radius: 25px;
+    height: 90%;
+}
+.spellListOnFormHideShow{
+    grid-area: slofHiSh;
+    border-radius: 25px;
+    height: 90%;
+}
+.spellListOnFormEditForm  {
+    grid-area: slofEdit
+
+}
+.spellListOnFormSpellName {
+    grid-area: slofName
+
+}
+.spellListOnFormId {
+    grid-area: slofSpId
+
+}
+.spellListOnFormPage {
+    grid-area: slofPage
+
+}
+.spellListOnFormRange {
+    grid-area: slofRang
+
+}
+.spellListOnFormComponents {
+    grid-area: slofComp
+
+}
+.spellListOnFormMaterial {
+    grid-area: slofMate
+
+}
+.spellListOnFormRitual {
+    grid-area: slofRitu
+
+}
+.spellListOnFormDuration {
+    grid-area: slofDura
+
+}
+.spellListOnFormCastingTime {
+    grid-area: slofCast
+
+}
+.spellListOnFormLevel {
+    grid-area: slofLeve
+
+}
+.spellListOnFormSchool {
+    grid-area: slofScho
+
+}
+.spellListOnFormClasses {
+    grid-area: slofClas;
+    columns: 9;
+
+}
+.spellListOnFormDescription {
+    grid-area: slofDesc
+
+}
+.spellListOnFormHigherLevel {
+    grid-area: slofHigh
+
+}

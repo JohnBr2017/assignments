@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { addNewSpell, getSpellList, deletedSpell, editedSpell } from "../../redux/spells"
 import Form from "../form/Form"
 import CreatedSpells from "./spell/index"
+import "./spellmain.css"
 
 class AllSpells extends Component {
     constructor() {
@@ -31,13 +32,14 @@ class AllSpells extends Component {
         let { spellList }= this.props
         return (
             <div>
-                <div>
+                <div className="mainForm">
                     <Form add submit={this.addSpell} />
                 </div>
                 <div>
-                    {spellList.map((spell, i) => {
-                        let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id } = spell;  
-                        console.log(spell.ritual)                      
+                    {spellList
+                        // .sort((a, b) => a.spellName > b.spellName)
+                        .map((spell, i) => {
+                        let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id } = spell;    
                         return <CreatedSpells spellName={spellName} description={description} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} casting_time={casting_time} level={level} school={school} classes={classes} key={i} _id={_id} deleteSpell={this.deleteSpell} editSpell={this.editSpell} > </CreatedSpells>
                     })}
                 </div>
