@@ -23,6 +23,7 @@ class CreatedSpells extends Component {
         let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id, deleteSpell, editSpell } = this.props
         let { hidden } = this.state;
         let spellStyle = { display: hidden ? "none" : "initial" }
+        
         return (
             <div className="spellListOnFormSpellBox" >
                 <button style={spellStyle} className="spellListOnFormDelete" onClick={() => deleteSpell(_id)} >Delete</button>

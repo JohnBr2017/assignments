@@ -41,7 +41,7 @@ class Form extends Component {
     handleChecked = (e) => {
         let { name, value, checked } = e.target;
         let { add, edit } = this.props
-        let { classes } = this.state
+        // let { classes } = this.state
         if (add) {
             if (checked === !true) {
                 classesArray.splice(classesArray.indexOf(value), 1)
@@ -57,17 +57,17 @@ class Form extends Component {
         } else if (edit) {
             console.log("this is edit", edit)
             if (checked === !true) {
-                classes.sort()
-                classes.splice(classes.indexOf(value), 1)
+                classesArray.sort()
+                classesArray.splice(classesArray.indexOf(value), 1)
             } else if (checked === true) {
-                classes.push(value)
-                classes.sort()
+                classesArray.push(value)
+                classesArray.sort()
             }
             this.setState((prevState) => {
-                console.log(classes, "this is state")
+                console.log(classesArray, "this is state")
                 return {
                     ...prevState.state,
-                    [name]: classes
+                    [name]: classesArray
                 }
             })
         }
@@ -108,7 +108,9 @@ class Form extends Component {
             this.clearInput();
         } else if (edit) {
             this.props.submit(this.state, _id);
+            window.location.reload()
         }
+
     }
     render() {
         let { spellName, higher_level, page, range, components, material, duration, casting_time, level, school, description } = this.state;
@@ -116,19 +118,28 @@ class Form extends Component {
         return (
             <form className="form" onSubmit={this.handleSubmit}>
                 <input className="formSpellName" onChange={this.handleChange} value={spellName} name="spellName" placeholder="Spell Name" />
-                <textarea className="formDescription" onChange={this.handleArrayChange} value={description} name="description" rows="7" cols="50" placeholder="Description: ***Best used when copy paste straight into box, then typing***" />
-                <textarea className="formHigherLevel" onChange={this.handleArrayChange} value={higher_level} name="higher_level" rows="7" cols="50" placeholder="Higher Level: ***Best used when copy paste straight into box, then typing***" />
                 <input className="formPage" onChange={this.handleChange} value={page} name="page" placeholder="Page" />
                 <input className="formRange" onChange={this.handleChange} value={range} name="range" placeholder="Range" />
+                <fieldset className="formRitual"> Ritual:
+                    Yes<input onChange={this.handleChange} value="Yes" name="ritual" type="radio" />
+                    No<input onChange={this.handleChange} value="No" name="ritual" type="radio" />
+                </fieldset>
+                <fieldset className="formSchool"> School:
+                    <select onChange={this.handleChange} name="school" value={school.name} >
+                        <option value="Abjuration" >Abjuration</option>
+                        <option value="Conjuration" >Conjuration</option>
+                        <option value="Divination" >Divination</option>
+                        <option value="Enchantment" >Enchantment</option>
+                        <option value="Evocation" >Evocation</option>
+                        <option value="Illusion" >Illusion</option>
+                        <option value="Necromancy" >Necromancy</option>
+                        <option value="Transmutation" >Transmutation</option>
+                    </select>
+                </fieldset>
                 <input className="formComponents" onChange={this.handleChange} value={components} name="components" placeholder="Components" />
-                <textarea className="formMaterials" onChange={this.handleArrayChange} value={material} name="material" rows="7" cols="50" placeholder="Materials: ***Best used when copy paste straight into box, then typing***" />
-                <div className="formRitual"> Ritual:
-                    Yes<input onChange={this.handleChange} checked={this.state.checked} value="Yes" name="ritual" type="radio" />
-                    No<input onChange={this.handleChange} checked={this.state.checked} value="No" name="ritual" type="radio" />
-                </div>
                 <input className="formDuration" onChange={this.handleChange} value={duration} name="duration" placeholder="Duration" />
                 <input className="formCastingTime" onChange={this.handleChange} value={casting_time} name="casting_time" placeholder="Casting Time" />
-                <div className="formLevel">Level:
+                <fieldset className="formLevel">Level:
                     <select onChange={this.handleChange} name="level" value={level} >
                         <option value={"Cantrip"} >Cantrip</option>
                         <option value={1} >Level 1</option>
@@ -141,21 +152,10 @@ class Form extends Component {
                         <option value={8} >Level 8</option>
                         <option value={9} >Level 9</option>
                     </select>
-                </div>
-                <div className="formSchool"> School:
-                    <select onChange={this.handleChange} name="school" value={school.name} >
-                        <option value={"Abjuration"} >Abjuration</option>
-                        <option value="Conjuration" >Conjuration</option>
-                        <option value="Divination" >Divination</option>
-                        <option value="Enchantment" >Enchantment</option>
-                        <option value="Evocation" >Evocation</option>
-                        <option value="Illusion" >Illusion</option>
-                        <option value="Necromancy" >Necromancy</option>
-                        <option value="Transmutation" >Transmutation</option>
-                    </select>
-                </div>
+                </fieldset>
+                <textarea className="formMaterials" onChange={this.handleArrayChange} value={material} name="material" rows="7" cols="50" placeholder="Materials: ***Best used when copy paste straight into box, then typing***" />
                 <div className="formClasses">
-                    <p className="formClassName">Classes</p>
+                    <legend className="formClassName">Classes</legend>
                     <div className="formClassBard" >
                         Bard<input onChange={this.handleChecked} value={"Bard"} name="classes" type="checkbox" />
                     </div>
@@ -181,6 +181,8 @@ class Form extends Component {
                         Wizard<input onChange={this.handleChecked} value={"Wizard"} name="classes" type="checkbox" />
                     </div>
                 </div>
+                <textarea className="formDescription" onChange={this.handleArrayChange} value={description} name="description" rows="7" cols="50" placeholder="Description: ***Best used when copy paste straight into box, then typing***" />
+                <textarea className="formHigherLevel" onChange={this.handleArrayChange} value={higher_level} name="higher_level" rows="7" cols="50" placeholder="Higher Level: ***Best used when copy paste straight into box, then typing***" />
                 <button className="formSubmit">Submit</button>
             </form>
         );

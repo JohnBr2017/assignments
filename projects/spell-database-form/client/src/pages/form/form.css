@@ -93,14 +93,16 @@ textarea:focus{
     grid-template-areas: 
     "spcNam . . ."
     "spcBar spcCle spcDru spcPal"
-    "spcRan spcSor spcWar spcWiz"
+    "spcRan spcSor spcWar spcWiz";
+
 }
 
 .formClassName{
-    grid-area: spcNam
+    grid-area: spcNam;  
 }
 .formClassBard {
-    grid-area: spcBar
+    grid-area: spcBar;
+
 }
 
 .formClassCleric {
