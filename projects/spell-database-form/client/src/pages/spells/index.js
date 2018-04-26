@@ -37,8 +37,8 @@ class AllSpells extends Component {
                 </div>
                 <div>
                     {spellList
-                        // .sort((a, b) => a.description !== b.description ? a.description < b.description ? -1 : 1 : 0)
-                        .sort((a, b) => a.spellName !== b.spellName ? a.spellName.toLowerCase() < b.spellName.toLowerCase() ? -1 : 1 : 0)
+                        .sort((a, b) => a.description !== b.description ? a.description < b.description ? -1 : 1 : 0)
+                        // .sort((a, b) => a.spellName !== b.spellName ? a.spellName.toLowerCase() < b.spellName.toLowerCase() ? -1 : 1 : 0)
                         .map((spell, i) => {
                             let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id } = spell;
                             return <CreatedSpells spellName={spellName} description={description} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration} casting_time={casting_time} level={level} school={school} classes={classes} key={i} _id={_id} deleteSpell={this.deleteSpell} editSpell={this.editSpell} > </CreatedSpells>
